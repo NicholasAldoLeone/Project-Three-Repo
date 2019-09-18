@@ -1,3 +1,4 @@
+
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -9,13 +10,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve up static assets
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+// Passport configuration
+// const passport = require("passport");
+require("./services/passport");
 
 // Add routes, both API and view
 app.use(routes);
-
 
 // Connect to the Mongo DB
 mongoose.connect(
@@ -28,5 +31,5 @@ mongoose.connect(
 
 // Start the API server
 app.listen(PORT, () =>
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`)
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}! `)
 );

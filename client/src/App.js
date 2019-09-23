@@ -1,5 +1,4 @@
 import React from "react";
-
 import Navbar from "./components/Navbar";
 // import {Col, Row, Container } from './components/Grid'
 import Main from './components/Questions/Main';

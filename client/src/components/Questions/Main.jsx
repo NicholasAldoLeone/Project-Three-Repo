@@ -1,25 +1,47 @@
 import React from 'react';
 import data from '../../data/data';
 import Answers from '../Answers/Answers';
+import API from '../../util/API'
 class Main extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {
             nr: 0,
             total: data.length,
             showButton: false,
             questionAnswered: false,
             score: 0,
-            classNames: ['', '', '', '']
+            classNames: ['', '', '', ''],
+            results: []
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
-        this.handleStartQuiz = this.handleStartQuiz.bind(this);
+        // this.handleStartQuiz = this.handleStartQuiz.bind(this);
         this.resetClasses = this.resetClasses.bind(this)
         this.handleIncreaseScore = this.handleIncreaseScore.bind(this);
         this.checkAnswer.bind(this)
     }
+
+    componentDidMount(){
+        this.loadQuizzes()
+    }
+
+    loadQuizzes = () => {
+        API.getSingleQuiz("5d83e44b67d54c7d6cb144f1")
+          .then(res =>
+            // console.log ("test 3" + res.data.quiz[1].body[nr].options[0]),
+            // Single Question:
+            // console.log(res.data.quiz),
+            this.setState({
+                results: res.data.quiz,
+                question: res.data.quiz[0].body
+            }),
+        //    console.log("test 2" + res.data.quiz[0].body)
+          )
+        //   single answer:
+        // console.log("Answer 2" + res.data.quiz[0].options)
+          .catch(err => console.log(err));
+      };
     pushData(nr) {
         this.setState({
             question: data[nr].question,
@@ -33,7 +55,7 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         let { nr } = this.state;
         this.pushData(nr);
     }
@@ -76,12 +98,6 @@ class Main extends React.Component {
             this.handleShowButton();
 
         }
-
-        // if (isAnswered) {
-        //     this.setState({
-        //         classNames: ['', '', '', '']
-        //     });
-        // }
     }
 
     handleShowButton() {
@@ -91,11 +107,11 @@ class Main extends React.Component {
         })
     }
 
-    handleStartQuiz() {
-        this.setState({
-            nr: 1
-        });
-    }
+    // handleStartQuiz() {
+    //     this.setState({
+    //         nr: 1
+    //     });
+    // }
 
     handleIncreaseScore() {
         this.setState({
@@ -105,24 +121,30 @@ class Main extends React.Component {
 
     render() {
         let { nr, total, question, answers, correct, showButton, questionAnswered, score, classNames } = this.state;
-
-        return (
-            <div className="container">
-
-                <div className="row">
-                    <div className="col-lg-10 col-lg-offset-1">
-                        <div id="question">
-                            <h4>Question {nr}</h4>
-                            <p>{question}</p>
-                        </div>
-                        <Answers answers={answers} correct={correct} classes={classNames} checkAnswer={this.checkAnswer} increaseScore={this.handleIncreaseScore} />
-                        <div id="submit">
-                            {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
+        let stuff = this.state.results
+        {console.log(stuff)}
+        if(stuff.length !== 0){
+            console.log("Made it");
+            return (
+                <div className="container">
+    
+                    <div className="row">
+                        <div className="col-lg-10 col-lg-offset-1">
+                            <div id="question">
+                                <h4>Question {nr}</h4>
+                                <p>{stuff[nr - 1].body}</p>
+                            </div>
+                            <Answers answers={stuff[nr -1].options} correct={correct} classes={classNames} checkAnswer={this.checkAnswer} increaseScore={this.handleIncreaseScore} />
+                            <div id="submit">
+                                {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }else {
+            return <h1>Ain't got no</h1>
+        }
     }
 };
 

@@ -22,6 +22,11 @@ const quizSchema = new Schema({
             options: {
                 type: Array,
                 required: true
+            },
+
+            correctAnswer : {
+                type: Number,
+                required: true
             }
         }
     ]

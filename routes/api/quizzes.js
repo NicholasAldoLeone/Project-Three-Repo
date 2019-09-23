@@ -17,6 +17,9 @@ router.get("/:id", function (req, res) {
 
 router.post("/create", function(req, res){
     db.Quiz.create(req.body, {
+        title: req.body.title,
+        author: req.body.author,
+        quiz: req.body.quiz
 
     }).then(function(data){
         console.log("Quiz created: " + data);

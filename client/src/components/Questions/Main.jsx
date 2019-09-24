@@ -26,23 +26,18 @@ class Main extends React.Component {
     componentDidMount(){
         var id = window.location.href;
         var newId = id.split("z/");
-        this.loadQuizzes(newId[1]);
+        this.getbyId(newId[1]);
     }
 
-    loadQuizzes = (params) => {
+    getbyId = (params) => {
         API.getSingleQuiz(params)
           .then(res =>
-            // console.log ("test 3" + res.data.quiz[1].body[nr].options[0]),
-            // Single Question:
-            // console.log(res.data.quiz),
             this.setState({
                 results: res.data.quiz,
-                question: res.data.quiz[0].body
+                question: res.data.quiz[0].body,
+                id: res.data._id
             }),
-        //    console.log("test 2" + res.data.quiz[0].body)
           )
-        //   single answer:
-        // console.log("Answer 2" + res.data.quiz[0].options)
           .catch(err => console.log(err));
       };
     pushData(nr) {

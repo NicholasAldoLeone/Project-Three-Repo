@@ -6,6 +6,6 @@ export default {
     },
 
     getSingleQuiz: function(quizId) {
-        return axios.get("api/database/" + quizId);
+        return axios.get("/api/database/" + quizId);
     }
 }

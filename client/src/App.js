@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./components/Form/form";
+import NewForm from "./components/Form";
 import Navbar from "./components/Navbar";
 // import {Col, Row, Container } from './components/Grid'
 // import Main from './components/Questions/Main';
@@ -8,7 +8,7 @@ function App() {
   return( 
 <div>
    <Navbar />;
-   <Form />;
+   <NewForm />;
    
    </div>
   )

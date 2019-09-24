@@ -3,13 +3,13 @@ import CreateForm from "./pages/Form.js";
 import Navbar from "./components/Navbar";
 import Main from './components/Questions/Main';
 import './styles/quiztake.css';
-// import Quizzes from "./pages/Quizzes.js"
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import Quizzes from "./pages/Quizzes.js"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 function App() {
   return (
     <div>
-    
+    <Router>
         <div>
           <Navbar />
           <Switch>
@@ -19,7 +19,7 @@ function App() {
 
           </Switch>
         </div>
-  
+  </Router>
     </div>
   )
 };

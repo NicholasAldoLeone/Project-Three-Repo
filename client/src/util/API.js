@@ -9,7 +9,8 @@ export default {
         return axios.get("/api/database/" + id);
     },
 
-    createQuiz: function() {
-        return axios.get("/api/database/create");
+    createQuiz: function(quizForm) {
+        console.log(quizForm);
+        return axios.post("/api/database/create", quizForm);
     }
 }

@@ -1,7 +1,6 @@
 import React from "react";
-import NewForm from "./components/Form";
+import CreateForm from "./pages/Form.js";
 import Navbar from "./components/Navbar";
-// import {Col, Row, Container } from './components/Grid'
 import Main from './components/Questions/Main';
 import './styles/quiztake.css';
 import Quizzes from "./pages/Quizzes.js"
@@ -16,7 +15,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Quizzes} />
             <Route exact path="/quiz/:id" component={Main} />
-            <Route exact path="/create" component={NewForm} />
+            <Route exact path="/create" component={CreateForm} />
 
           </Switch>
         </div>

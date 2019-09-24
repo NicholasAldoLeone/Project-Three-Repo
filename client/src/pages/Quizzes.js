@@ -3,7 +3,7 @@ import API from "../util/API";
 // import {Link} from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import ViewButton from "../components/ViewButton";
-console.log(window);
+console.log("Homepage");
 
 class Quizzes extends React.Component {
     state = {
@@ -21,6 +21,7 @@ class Quizzes extends React.Component {
                 list: res.data, 
 
             })
+            
         })
     }
 
@@ -40,7 +41,7 @@ class Quizzes extends React.Component {
                                 })}
                             </div>
                         ): (
-                            <h1>Loading Quizzes...</h1>
+                            <h1>No Quizzes Found!</h1>
                         )}
 
                     </Col>

@@ -5,7 +5,7 @@ export default {
         return axios.get("/api/database/all");
     },
 
-    getSingleQuiz: function(quizId) {
-        return axios.get("/api/database/" + quizId);
+    getSingleQuiz: function(id) {
+        return axios.get("/api/database/" + id);
     }
 }

@@ -3,7 +3,6 @@ const db = require("../../models");
 
 router.get("/all", function (req, res) {
     db.Quiz.find().then(function (data) {
-        console.log("results: " + data);
         res.json(data);
     })
 })

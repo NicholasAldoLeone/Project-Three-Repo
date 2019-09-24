@@ -1,9 +1,7 @@
 import React from "react";
 import API from "../util/API";
-// import {Link} from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import ViewButton from "../components/ViewButton";
-console.log("Homepage");
 
 class Quizzes extends React.Component {
     state = {

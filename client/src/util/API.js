@@ -7,5 +7,9 @@ export default {
 
     getSingleQuiz: function(id) {
         return axios.get("/api/database/" + id);
+    },
+
+    createQuiz: function() {
+        return axios.get("/api/database/create");
     }
 }

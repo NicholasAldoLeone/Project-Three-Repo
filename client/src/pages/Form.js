@@ -1,21 +1,26 @@
-import React, {Component} from "react";
+import React from "react";
 import 'react-bootstrap';
 import { Jumbotron, Container, Form, Button } from 'react-bootstrap';
-import "../Form/form.css";
 
-function NewForm() {
-    //build req.body for us, send information across to routes to put inside database
+class CreateForm extends React.Component {
+    state = {
+        author: ""
+    }
 
-
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        console.log("Submit Button Click");
+    }
+    
+    render() {
+        //build req.body for us, send information across to routes to put inside database
         return (
             <div>
-               <Jumbotron fluid>
+                <Jumbotron fluid>
                     <Container>
-                        <h1 class="tron">Create Your Quiz!</h1>
+                        <h1 className="tron">Create Your Quiz!</h1>
                     </Container>
                 </Jumbotron>
-                
-
 
                 <Form className="col-sm-6 container-fluid myform">
                     <Form.Group controlId="Title">
@@ -49,8 +54,6 @@ function NewForm() {
                     </Form.Group>
                 </Form>
 
-                
-
                 <Form className="col-sm-6 container-fluid myform">
                     <Form.Group controlId="Question">
                         <Form.Label>Question</Form.Label>
@@ -78,8 +81,6 @@ function NewForm() {
                     </Form.Group>
                 </Form>
 
-                
-
                 <Form className="col-sm-6 container-fluid myform">
                     <Form.Group controlId="Question">
                         <Form.Label>Question</Form.Label>
@@ -104,22 +105,18 @@ function NewForm() {
                     <Form.Group controlId="Correct Answer">
                         <Form.Label> Correct Answer</Form.Label>
                         <Form.Control type="Correct Answer" />
+                        <Button onClick = {() => this.handleFormSubmit()}/>
                     </Form.Group>
                 </Form>
 
             </div>
         )
     }
-
-
-
-
-
-
+}
 
 // take over
 //write function here 
 //UA react 20 activity 11 
 //Look at these files under activity 11:SRC, bookjs under pages, API.js in UTil's  
 
-export default NewForm;
+export default CreateForm;

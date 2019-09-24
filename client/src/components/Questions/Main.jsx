@@ -12,7 +12,8 @@ class Main extends React.Component {
             questionAnswered: false,
             score: 0,
             classNames: ['', '', '', ''],
-            results: []
+            results: [],
+            id: ""
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
@@ -68,7 +69,6 @@ class Main extends React.Component {
     }
 
     checkAnswer = (e) => {
-
 
         if (!this.state.questionAnswered) {
             let elem = e.target;

@@ -12,8 +12,7 @@ class Main extends React.Component {
             questionAnswered: false,
             score: 0,
             classNames: ['', '', '', ''],
-            results: [],
-            id: ""
+            results: []
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
@@ -24,13 +23,11 @@ class Main extends React.Component {
     }
 
     componentDidMount(){
-        var id = window.location.href;
-        var newId = id.split("z/");
-        this.loadQuizzes(newId[1]);
+        this.loadQuizzes()
     }
 
-    loadQuizzes = (params) => {
-        API.getSingleQuiz(params)
+    loadQuizzes = () => {
+        API.getSingleQuiz("5d892e4d96a4ef9f8fc4ea0c")
           .then(res =>
             // console.log ("test 3" + res.data.quiz[1].body[nr].options[0]),
             // Single Question:

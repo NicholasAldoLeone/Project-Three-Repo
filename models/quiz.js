@@ -24,7 +24,7 @@ const quizSchema = new Schema({
                 required: true
             },
 
-            correctAnswer : {
+            correctA : {
                 type: Number,
                 required: true
             }

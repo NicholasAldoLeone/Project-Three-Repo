@@ -1,16 +1,34 @@
 import React from "react";
 import 'react-bootstrap';
-import { Jumbotron, Container, Form, Button } from 'react-bootstrap';
+import { Jumbotron, Container} from 'react-bootstrap';
+import { Input, TextArea, FormBtn } from "../components/Form";
+import API from "../util/API";
 
 class CreateForm extends React.Component {
     state = {
+        title: "",
         author: ""
     }
 
-    handleFormSubmit = (event) => {
-        event.preventDefault();
-        console.log("Submit Button Click");
+    resetState = () => {
+        this.setState({title: "", author: ""});
     }
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        API.createQuiz({
+            title: this.state.title,
+            author: this.state.author
+            
+        }).then(res => this.resetState());
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+      };
     
     render() {
         //build req.body for us, send information across to routes to put inside database
@@ -22,93 +40,25 @@ class CreateForm extends React.Component {
                     </Container>
                 </Jumbotron>
 
-                <Form className="col-sm-6 container-fluid myform">
-                    <Form.Group controlId="Title">
-                        <Form.Label>Title of Your Quiz</Form.Label>
-                        <Form.Control type="Title of Your Quiz" />
-                    </Form.Group>
-
-                    <Form.Group controlId="Question">
-                        <Form.Label>Question</Form.Label>
-                        <Form.Control type="question" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Correct Answer">
-                        <Form.Label> Correct Answer</Form.Label>
-                        <Form.Control type="Correct Answer" />
-                    </Form.Group>
-                </Form>
-
-                <Form className="col-sm-6 container-fluid myform">
-                    <Form.Group controlId="Question">
-                        <Form.Label>Question</Form.Label>
-                        <Form.Control type="question" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Correct Answer">
-                        <Form.Label> Correct Answer</Form.Label>
-                        <Form.Control type="Correct Answer" />
-                    </Form.Group>
-                </Form>
-
-                <Form className="col-sm-6 container-fluid myform">
-                    <Form.Group controlId="Question">
-                        <Form.Label>Question</Form.Label>
-                        <Form.Control type="question" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Answer">
-                        <Form.Label>Answer</Form.Label>
-                        <Form.Control type="answer" />
-                    </Form.Group>
-                    <Form.Group controlId="Correct Answer">
-                        <Form.Label> Correct Answer</Form.Label>
-                        <Form.Control type="Correct Answer" />
-                        <Button onClick = {() => this.handleFormSubmit()}/>
-                    </Form.Group>
-                </Form>
-
+                <form>
+                    <Input
+                        value={this.state.title}
+                        onChange={this.handleInputChange}
+                        name="title"
+                        placeholder="Title (required)"
+                    />
+                    <Input
+                        value={this.state.author}
+                        onChange={this.handleInputChange}
+                        name="author"
+                        placeholder="Author (required)"
+                    />
+                    <FormBtn
+                        onClick={this.handleFormSubmit}
+                    > 
+                        Submit Quiz
+              </FormBtn>
+                </form>
             </div>
         )
     }

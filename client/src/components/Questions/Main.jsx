@@ -23,23 +23,20 @@ class Main extends React.Component {
     }
 
     componentDidMount(){
-        this.loadQuizzes()
+        var id = window.location.href;
+        var newId = id.split("z/");
+        this.getbyId(newId[1]);
     }
 
-    loadQuizzes = () => {
-        API.getSingleQuiz("5d892e4d96a4ef9f8fc4ea0c")
+    getbyId = (params) => {
+        API.getSingleQuiz(params)
           .then(res =>
-            // console.log ("test 3" + res.data.quiz[1].body[nr].options[0]),
-            // Single Question:
-            // console.log(res.data.quiz),
             this.setState({
                 results: res.data.quiz,
-                question: res.data.quiz[0].body
+                question: res.data.quiz[0].body,
+                id: res.data._id
             }),
-        //    console.log("test 2" + res.data.quiz[0].body)
           )
-        //   single answer:
-        // console.log("Answer 2" + res.data.quiz[0].options)
           .catch(err => console.log(err));
       };
     pushData(nr) {

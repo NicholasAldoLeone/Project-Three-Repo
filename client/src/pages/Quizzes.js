@@ -1,13 +1,14 @@
 import React from "react";
 import API from "../util/API";
-import {Link} from "react-router-dom";
-import {Col, Row, Container} from "../components/Grid";
+// import {Link} from "react-router-dom";
+import { Col, Row, Container } from "../components/Grid";
+import ViewButton from "../components/ViewButton";
+console.log(window);
 
 class Quizzes extends React.Component {
     state = {
-        title: "",
-        author: "",
-        id: "",
+        list: [],
+
     }
 
     componentDidMount() {
@@ -15,21 +16,10 @@ class Quizzes extends React.Component {
     }
 
     loadQuizzes = () => {
-        API.getQuizzes().then(res =>  {
-            console.log(res.data);
+        API.getQuizzes().then(res => {
             this.setState({
-                title: res.title,
-                author: res.author,
-            })
-        })
-    }
+                list: res.data, 
 
-    getById = () => {
-        API.getSingleQuiz().then(res => {
-            console.log(res.data)
-            this.setState({
-                title: res.data,
-                author: res.data
             })
         })
     }
@@ -38,8 +28,21 @@ class Quizzes extends React.Component {
         return (
             <Container fluid>
                 <Row>
-                    <Col size = "md-6">
-                        <h1>This is going to be the homepage</h1>
+                    <Col size="md-6">
+                        {this.state.list.length ? (
+                            <div>
+                                {this.state.list.map(quiz => {
+                                    return <ul key = {quiz._id}>        
+                                         <ViewButton value = {quiz._id} href = {"quiz/" + quiz._id} />
+                                         
+                                    </ul>
+    
+                                })}
+                            </div>
+                        ): (
+                            <h1>Loading Quizzes...</h1>
+                        )}
+
                     </Col>
                 </Row>
             </Container>

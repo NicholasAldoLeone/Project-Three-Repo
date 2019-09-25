@@ -7,7 +7,7 @@ import axios from 'axios';
 import CreateForm from "./pages/Form.js";
 import Quizzes from "./pages/Quizzes.js"
 //Components
-import Navbar from "./components/Navbar";
+import NavItem from "./components/Navbar";
 import Main from './components/Questions/Main';
 import LoginForm from './components/Login';
 
@@ -57,7 +57,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+            <NavItem updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
             {/* greet user if logged in: */}
             {this.state.loggedIn &&
               <p>Join the party, {this.state.username}!</p>

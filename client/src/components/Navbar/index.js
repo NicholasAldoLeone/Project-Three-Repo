@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Link } from 'react-router-dom';
-// import logo from '../logo.svg';
 import axios from 'axios'
+import Logo from '../../images/logoPineapple.png'
 import { Navbar, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
-
+import { isNullOrUndefined } from 'util';
+import "./Navbar.css"
 class NavbarComponent extends Component {
   constructor() {
     super()
@@ -33,14 +34,19 @@ class NavbarComponent extends Component {
 
     return (
       <div>
-
         <header className="navbar App-header" id="nav-container">
           <div className="col-4" >
             {loggedIn ? (
               <section className="navbar-section">
+                <Link to="/" className="btn btn-link text-secondary">
+                  <span className="text-secondary">home</span>
+                </Link>
+                <Link to="/create" className="btn btn-link">
+                  <span className="text-secondary">Create a Quiz</span>
+                </Link>
                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                  <span className="text-secondary">logout</span></Link>
-
+                  <span className="text-secondary">logout</span>
+                </Link>
               </section>
             ) : (
                 <section className="navbar-section">
@@ -53,16 +59,13 @@ class NavbarComponent extends Component {
                   <Link to="/signup" className="btn btn-link">
                     <span className="text-secondary">sign up</span>
                   </Link>
-                  <Link to="/create" className="btn btn-link">
-                    <span className="text-secondary">Create a Quiz</span>
-                  </Link>
                 </section>
               )}
           </div>
-          <div className="col-4 col-mr-auto">
+          <div className="col-6 col-mr-auto">
             <div id="top-filler"></div>
-            {/* <img src={logo} className="App-logo" alt="logo" /> */}
-            <h1 className="App-title">MERN Passport</h1>
+            <h1 className="App-title">Taking Care of Quizness</h1>
+            <img src={Logo} className="App-logo" alt="logo" />
           </div>
         </header>
       </div>

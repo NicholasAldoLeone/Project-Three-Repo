@@ -12,24 +12,7 @@ const quizSchema = new Schema({
         required: true
     },
 
-    quiz: [
-        {
-            body: {
-                type: String,
-                required: true
-            },
-
-            options: {
-                type: Array,
-                required: true
-            },
-
-            correctA : {
-                type: Number,
-                required: true
-            }
-        }
-    ]
+    questions: []
 })
 
 const Quiz = mongoose.model("Quiz", quizSchema);

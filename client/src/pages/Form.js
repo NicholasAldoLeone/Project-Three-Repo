@@ -1,72 +1,151 @@
 import React from "react";
-import 'react-bootstrap';
-import { Jumbotron, Container} from 'react-bootstrap';
-import { Input, TextArea, FormBtn } from "../components/Form";
-import API from "../util/API";
+import { Container, Row, Col, Jumbotron } from "reactstrap";
 
-class CreateForm extends React.Component {
+import Question from "../components/QuestionInput";
+import Axios from "axios";
+
+const questionTemplate = {
+    text: "Enter your question here",
+    answers: [
+        { text: "Answer 1" },
+        { text: "Answer 2" },
+        { text: "Answer 3" },
+        { text: "Answer 4", isCorrect: true }
+    ]
+};
+
+class Form extends React.Component {
+
     state = {
-        title: "",
-        author: ""
-    }
+        title: "Quiz Name",
+        author: "Author Name",
+        questions: [
+            {
+                text: "Enter your question here",
+                answers: [
+                    { text: "Answer 1" },
+                    { text: "Answer 2" },
+                    { text: "Answer 3" },
+                    { text: "Answer 4", isCorrect: true }
+                ]
+            }
+        ]
+    };
 
-    resetState = () => {
-        this.setState({title: "", author: ""});
-    }
-
-    handleFormSubmit = event => {
-        event.preventDefault();
-        API.createQuiz({
-            title: this.state.title,
-            author: this.state.author
-            
-        }).then(res => this.resetState());
-    }
-
-    handleInputChange = event => {
-        const { name, value } = event.target;
+    handleTitleAuthorInput = e => {
+        const { name, value } = e.target;
         this.setState({
-          [name]: value
-        });
-      };
-    
-    render() {
-        //build req.body for us, send information across to routes to put inside database
-        return (
-            <div>
-                <Jumbotron fluid>
-                    <Container>
-                        <h1 className="tron">Create Your Quiz!</h1>
-                    </Container>
-                </Jumbotron>
+            [name]: value
+        })
+    };
 
-                <form>
-                    <Input
-                        value={this.state.title}
-                        onChange={this.handleInputChange}
-                        name="title"
-                        placeholder="Title (required)"
-                    />
-                    <Input
-                        value={this.state.author}
-                        onChange={this.handleInputChange}
-                        name="author"
-                        placeholder="Author (required)"
-                    />
-                    <FormBtn
-                        onClick={this.handleFormSubmit}
-                    > 
-                        Submit Quiz
-              </FormBtn>
-                </form>
-            </div>
-        )
+    handleQuestionInput = e => {
+        const { name, value } = e.target;
+        const state = { ...this.state };
+        state.questions[name].text = value;
+        this.setState(state);
+    };
+
+    handleAnswerInput = e => {
+        const { question, answer } = e.target.dataset;
+        const state = { ...this.state };
+        state.questions[question].answers[answer].text = e.target.value;
+        this.setState(state);
+    };
+
+    addQuestion = () => {
+        const state = { ...this.state };
+        state.questions.push(questionTemplate);
+        this.setState(state);
+    };
+
+    removeQuestion = i => {
+        const state = { ...this.state };
+        if (state.questions.length !== 1) {
+            state.questions.splice(i, 1);
+            this.setState(state);
+        }
+    };
+
+    setCorrect = (question, answer) => {
+        const state = { ...this.state };
+        state.questions[question].answers = state.questions[question].answers.map(
+            answer => ({ text: answer.text })
+        );
+        state.questions[question].answers[answer].isCorrect = true;
+        this.setState(state);
+    };
+
+    handleFormSubmit = e => {
+        e.preventDefault();
+
+        Axios.post('api/quiz/create', {
+            title: this.state.title,
+           author: this.state.author,
+           questions:this.state.questions
+        })
+        .then(response => {
+            if(!response.data.errmsg) {
+                alert("quiz added successfully");   
+            }
+        }).catch(error => {
+            console.log("there was a problem: ", error);
+        })
+    }
+
+    render() {
+        const { title, author, questions } = this.state;
+        return (
+            <Container>
+                <Row>
+                    <Col className="text-center">
+                        <Jumbotron>
+                            <form>
+                                <h3>Quiz Name</h3>
+                                <input
+                                    type="text"
+                                    placeholder={title}
+                                    name="title"
+                                    value={title}
+                                    onChange={this.handleTitleAuthorInput}
+                                />
+                                <h3>Quiz</h3>
+                                <input
+                                    type="text"
+                                    placeholder={author}
+                                    name="author"
+                                    value={author}
+                                    onChange={this.handleTitleAuthorInput} />
+                            </form>
+                        </Jumbotron>
+                    </Col>
+                </Row>
+                <Row>
+                    {questions.length !== 0 ? (
+                        questions.map((question, i) => (
+                            <Col key={"question" + i} sm="12" md="6">
+                                <Question
+                                    length={questions.length}
+                                    question={question}
+                                    questionIndex={i}
+                                    handleAnswerInput={this.handleAnswerInput}
+                                    handleQuestionInput={this.handleQuestionInput}
+                                    removeQuestion={this.removeQuestion}
+                                    addQuestion={this.addQuestion}
+                                    setCorrect={this.setCorrect}
+                                />
+                            </Col>
+                        ))
+                    ) : (
+                            <h1>No Questions Yet</h1>
+                        )}
+                
+                </Row>
+                <button onClick={this.handleFormSubmit}>Submit</button>
+            </Container>
+        );
     }
 }
 
-// take over
-//write function here 
-//UA react 20 activity 11 
-//Look at these files under activity 11:SRC, bookjs under pages, API.js in UTil's  
 
-export default CreateForm;
+export default Form;

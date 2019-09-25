@@ -12,10 +12,10 @@ const requireAuth = passport.authenticate("jwt", { session: false });
 // API Routes
 router.use("/api", apiRoutes);
 
-// If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// // If no API routes are hit, send the React app
+// router.use(function(req, res) {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 function tokenizer(user) {
     return jwt.sign(
@@ -25,16 +25,23 @@ function tokenizer(user) {
       config.secret
     );
   }
-  router.get("/", function (req, res) {
-    res.send("Welcome to the v1 routes!");
-  });
+  
+  router.get('/', (req, res, next) => {
+    console.log('===== user!!======')
+    console.log(req.user)
+    if (req.user) {
+        res.json({ user: req.user })
+    } else {
+        res.json({ user: null })
+    }
+})
   
   router.get("/protected", requireAuth, function(req, res){
     res.send("You have been protected!");
   });
   
   router.post("/signin", requireSignin, function (req, res) {
-    res.json({ token: tokenizer(req.user) });
+    res.json({ token: tokenizer(req.user), email: req.user.email});
   });
   
   router.post("/signup", function (req, res) {
@@ -62,6 +69,22 @@ function tokenizer(user) {
         return next(err);
       });
   });
+  router.post('/logout', (req, res) => {
+    if (req.user) {
+        req.logout()
+        res.send({ msg: 'logging out' })
+    } else {
+        res.send({ msg: 'no user to log out' })
+    }
+})
+
+  // router.get("/user", requireAuth, function(req, res){
+  // db.User.findOne({ email })
+  // .then(user => {
+  //   // respond with the success if the user existed
+  //   res.json({ token: tokenizer(user) });
+  // });
+  // });
   
   module.exports = router;
   

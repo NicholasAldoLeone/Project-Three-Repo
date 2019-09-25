@@ -19,7 +19,6 @@ function App() {
             <Carousel />
 
 
-
           </div>
           <Switch>
             <Route exact path="/" component={Quizzes} label="Insert Quiz ID" />

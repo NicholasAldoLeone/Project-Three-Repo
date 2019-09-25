@@ -42,7 +42,7 @@ return(
 
     <Carousel.Caption>
       <h3 style={{fontSize: 60}}>Or Create Your Own!</h3>
-      <p style={{fontSize: 30}}>Use the "Create a Quiz" button above! Feel free to register to save your data!</p>
+      <p style={{fontSize: 30}}>Use the "Create a Quiz" button above <br></br> or feel free to register to save your data! </p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

@@ -14,8 +14,8 @@ router.get("/id/:id", function (req, res) {
     })
 })
 
-router.get("/route/:title", function(req, res){
-    db.Quiz.find({routeTitle: req.params.title}).then(function(data){
+router.get("/route/:routeTitle", function(req, res){
+    db.Quiz.find({routeTitle: req.params.routeTitle}).then(function(data){
         res.json(data)
     })
 })

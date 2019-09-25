@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Container, Col, Row } from "./components/Grid"
 import './styles/quiztake.css';
 import axios from 'axios';
 

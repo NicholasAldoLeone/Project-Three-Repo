@@ -36,7 +36,7 @@ class Quizzes extends React.Component {
         var title = this.state.title;
         var routeTitle = title.toLowerCase().replace(" ", "")
 
-        API.getByTitle().then(res => {
+        API.getByTitle(routeTitle).then(res => {
             this.setState({
                 list: res.data
             })

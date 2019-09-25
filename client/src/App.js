@@ -10,13 +10,14 @@ import Quizzes from "./pages/Quizzes.js"
 import Navbar from "./components/Navbar";
 import Main from './components/Questions/Main';
 import LoginForm from './components/Login';
+import Signup from './components/SignUp';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      email: null
     }
 
     this.getUser = this.getUser.bind(this)
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/user/').then(response => {
+    axios.get('/').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
@@ -41,13 +42,13 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          username: response.data.user.username
+          email: response.data.user.email
         })
       } else {
         console.log('Get user: no user');
         this.setState({
           loggedIn: false,
-          username: null
+          email: null
         })
       }
     })
@@ -60,15 +61,14 @@ class App extends Component {
             <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
             {/* greet user if logged in: */}
             {this.state.loggedIn &&
-              <p>Join the party, {this.state.username}!</p>
+              <p>Join the party, {this.state.email}!</p>
             }
-            <LoginForm />
             <Switch>
               <Route exact path="/" component={Quizzes} />
               <Route exact path="/quiz/:id" component={Main} />
               <Route exact path="/create" component={CreateForm} />
               <Route path="/login" render={() => <LoginForm updateUser={this.updateUser} />} />
-              {/* <Route path="/signup" render={() => <Signup/>} /> */}
+              <Route path="/signup" render={() => <Signup />} />
             </Switch>
           </div>
         </Router>

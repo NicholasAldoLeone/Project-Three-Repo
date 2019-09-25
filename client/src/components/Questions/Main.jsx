@@ -33,8 +33,8 @@ class Main extends React.Component {
         API.getSingleQuiz(params)
           .then(res =>
             this.setState({
-                results: res.data.quiz,
-                question: res.data.quiz[0].body,
+                results: res.data.questions,
+                question: res.data.questions[0].text,
                 id: res.data._id
             }),
           )
@@ -72,20 +72,24 @@ class Main extends React.Component {
 
         if (!this.state.questionAnswered) {
             let elem = e.target;
-            let correct = parseInt(this.state.results[this.state.nr-1].correctA);
-            console.log("I" + this.state.results[this.state.nr-1].correctA)
-            let answer = parseInt(elem.dataset.id);
-            console.log(answer)
+            // let correct = parseInt(this.state.results[this.state.nr-1].correctA);
+            // console.log("I" + this.state.results[this.state.nr-1].correctA)
+            let answer = elem.dataset.id;
+            let answerIndex = elem.dataset.a;
+            console.log(answer);
+            
+            
+
             let updatedClassNames = this.state.classNames;
 
-            if (answer === correct) {
-                updatedClassNames[answer - 1] = 'right';
+             if (answer === "true") {
+                updatedClassNames[answerIndex - 1] = 'right';
                 console.log("Correct!")
                 // increaseScore();
             }
             else {
                 console.log("test")
-                updatedClassNames[answer - 1] = 'wrong';
+                updatedClassNames[answerIndex - 1] = 'wrong';
             }
 
             this.setState({
@@ -119,9 +123,10 @@ class Main extends React.Component {
     render() {
         let { nr, total, question, answers, correct, showButton, questionAnswered, score, classNames } = this.state;
         let stuff = this.state.results
+        console.log(stuff);
         if(stuff.length !== 0){
             console.log("Made it");
-            console.log("1+" + stuff[nr-1].correctA)
+            // console.log("1+" + stuff[nr-1].correctA)
             return (
                 <div className="container">
     
@@ -129,9 +134,9 @@ class Main extends React.Component {
                         <div className="col-lg-10 col-lg-offset-1">
                             <div id="question">
                                 <h4>Question {nr}</h4>
-                                <p>{stuff[nr - 1].body}</p>
+                                <p>{stuff[nr - 1].text}</p>
                             </div>
-                            <Answers answers={stuff[nr -1].options} correct={[nr-1].correctA} classes={classNames} checkAnswer={this.checkAnswer} increaseScore={this.handleIncreaseScore} />
+                            <Answers answers={stuff[nr -1].answers}  classes={classNames} checkAnswer={this.checkAnswer}  increaseScore={this.handleIncreaseScore} />
                             <div id="submit">
                                 {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
                             </div>
@@ -146,3 +151,6 @@ class Main extends React.Component {
 };
 
 export default Main
+
+
+// correct={[nr-1].correctA}

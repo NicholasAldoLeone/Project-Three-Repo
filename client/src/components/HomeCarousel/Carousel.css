@@ -1,11 +1,11 @@
-h3{
+.QHead{
 color: white;
 text-decoration-line: black;
 text-shadow: 3px 3px 6px black;
 font-size: 600rem;
 text-align: left;
 }
-p{
+.QText{
     color: white;
 text-decoration-line: black;
 text-shadow: 2px 2px 4px black;

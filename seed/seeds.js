@@ -9,7 +9,7 @@ const quizSeed = [
     title: "Math Quiz",
     author: "Jeffery Shoeshow",
   
-    quiz: [
+    questions: [
       {
         body: "What is the sum of 1 + 1?",
         options: ["A: 1", "B: 2", "C: 3", "D: 4"],

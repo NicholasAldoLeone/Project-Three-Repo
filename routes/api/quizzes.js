@@ -26,11 +26,16 @@ router.post("/create", function(req, res){
     db.Quiz.create({
         title: req.body.title,
         author: req.body.author,
-        quiz: req.body.quiz
+        questions: req.body.questions
 
     }).then(function(data){
-        console.log("Quiz created: " + data);
+       res.send({msg: "Quiz Created Successfully"})})
+       .catch(err => {
+        return next(err);
+    });
     })
-})
+   
+
+
 
 module.exports = router;

@@ -63,7 +63,6 @@ class App extends Component {
             {this.state.loggedIn &&
               <p>Join the party, {this.state.email}!</p>
             }
-            <LoginForm />
             <Switch>
               <Route exact path="/" component={Quizzes} />
               <Route exact path="/quiz/:id" component={Main} />

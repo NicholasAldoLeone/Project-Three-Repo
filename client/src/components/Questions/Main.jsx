@@ -42,9 +42,6 @@ class Main extends React.Component {
       };
     pushData(nr) {
         this.setState({
-            // question: data[nr].question,
-            // answers: [data[nr].answers[0], data[nr].answers[1], data[nr].answers[2], data[nr].answers[3]],
-            // correct: data[nr].correct,
             nr: this.state.nr + 1
         });
     }

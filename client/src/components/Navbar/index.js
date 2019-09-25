@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navbar, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import './Navbar.css';
+import API from '../../util/API';
 
 const navbar = props => (
   <div id="navbar">

@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const quizRoutes = require("./quizzes.js");
+
 
 // Book routes
-router.use("/database", quizRoutes);
+router.use("/quiz", require("./quizzes"));
 
 module.exports = router;

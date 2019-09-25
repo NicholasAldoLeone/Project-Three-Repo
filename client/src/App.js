@@ -1,5 +1,5 @@
 import React from "react";
-import CreateForm from "./pages/Form.js";
+import Form from "./pages/Form.js";
 import Navbar from "./components/Navbar";
 import Main from './components/Questions/Main';
 import './styles/quiztake.css';
@@ -15,7 +15,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Quizzes} />
             <Route exact path="/quiz/:id" component={Main} />
-            <Route exact path="/create" component={CreateForm} />
+            <Route exact path="/create" component={Form} />
 
           </Switch>
         </div>

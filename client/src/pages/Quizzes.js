@@ -18,9 +18,9 @@ class Quizzes extends React.Component {
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
-          [name]: value
+            [name]: value
         });
-      };
+    };
 
     loadQuizzes = () => {
         API.getQuizzes().then(res => {
@@ -51,31 +51,35 @@ class Quizzes extends React.Component {
                         {this.state.list.length ? (
                             <div>
                                 {this.state.list.map(quiz => {
-                                    return <ul key={quiz._id}>
-                                        <ViewButton value={quiz._id} href={"quiz/" + quiz._id} />
+                                    return <div className="card">
+                                        <div className="card-body">
+                                            <p className="card-text">Title: {quiz.title}</p>
+                                            <p className="card-text">Author: {quiz.author}</p>
+                                            <ul key={quiz._id}>
+                                                <ViewButton value={quiz._id} href={"quiz/" + quiz._id} />
 
-                                    </ul>
-
+                                            </ul>
+                                        </div>
+                                    </div>
                                 })}
                             </div>
                         ) : (
                                 <h1>No Quizzes Found!</h1>
                             )}
-
                     </Col>
                     <form>
-                    <Input
-                        value={this.state.title}
-                        onChange={this.handleInputChange}
-                        name = "title"
-                        placeholder="search"
-                    />
-                    <FormBtn
-                        onClick={this.loadQuizzesByTitle}
-                    > 
-                        Search
+                        <Input
+                            value={this.state.title}
+                            onChange={this.handleInputChange}
+                            name="title"
+                            placeholder="search"
+                        />
+                        <FormBtn
+                            onClick={this.loadQuizzesByTitle}
+                        >
+                            Search
               </FormBtn>
-                </form>
+                    </form>
                 </Row>
             </Container>
         )

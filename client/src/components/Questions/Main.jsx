@@ -23,7 +23,7 @@ class Main extends React.Component {
         this.checkAnswer.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         var id = window.location.href;
         var newId = id.split("z/");
         this.getbyId(newId[1]);
@@ -31,15 +31,15 @@ class Main extends React.Component {
 
     getbyId = (params) => {
         API.getSingleQuiz(params)
-          .then(res =>
-            this.setState({
-                results: res.data.questions,
-                question: res.data.questions[0].text,
-                id: res.data._id
-            }),
-          )
-          .catch(err => console.log(err));
-      };
+            .then(res =>
+                this.setState({
+                    results: res.data.questions,
+                    question: res.data.questions[0].text,
+                    id: res.data._id
+                }),
+            )
+            .catch(err => console.log(err));
+    };
     pushData(nr) {
         this.setState({
             // question: data[nr].question,
@@ -53,10 +53,10 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-    UNSAFE_componentWillMount() {
-        let { nr } = this.state;
-        this.pushData(nr);
-    }
+    // UNSAFE_componentWillMount() {
+    //     let { nr } = this.state;
+    //     this.pushData(nr);
+    // }
     nextQuestion() {
         let { nr, total, score } = this.state;
         this.pushData(nr);
@@ -68,28 +68,26 @@ class Main extends React.Component {
         this.resetClasses()
     }
 
-    checkAnswer = (e) => {
+    checkAnswer = (obj) => {
+        console.log(obj);
 
         if (!this.state.questionAnswered) {
-            let elem = e.target;
             // let correct = parseInt(this.state.results[this.state.nr-1].correctA);
             // console.log("I" + this.state.results[this.state.nr-1].correctA)
-            let answer = elem.dataset.id;
-            let answerIndex = elem.dataset.a;
-            console.log(answer);
-            
-            
+            let isCorrect = obj.isCorrect;
+            let answerIndex = obj.a;
+
 
             let updatedClassNames = this.state.classNames;
 
-             if (answer === "true") {
-                updatedClassNames[answerIndex - 1] = 'right';
+            if (isCorrect) {
+                updatedClassNames[answerIndex] = 'right';
                 console.log("Correct!")
                 // increaseScore();
             }
             else {
                 console.log("test")
-                updatedClassNames[answerIndex - 1] = 'wrong';
+                updatedClassNames[answerIndex] = 'wrong';
             }
 
             this.setState({
@@ -124,19 +122,19 @@ class Main extends React.Component {
         let { nr, total, question, answers, correct, showButton, questionAnswered, score, classNames } = this.state;
         let stuff = this.state.results
         console.log(stuff);
-        if(stuff.length !== 0){
+        if (stuff.length !== 0) {
             console.log("Made it");
             // console.log("1+" + stuff[nr-1].correctA)
             return (
                 <div className="container">
-    
+
                     <div className="row">
                         <div className="col-lg-10 col-lg-offset-1">
                             <div id="question">
-                                <h4>Question {nr}</h4>
-                                <p>{stuff[nr - 1].text}</p>
+                                <h4>Question {nr + 1}</h4>
+                                <p>{stuff[nr].text}</p>
                             </div>
-                            <Answers answers={stuff[nr -1].answers}  classes={classNames} checkAnswer={this.checkAnswer}  increaseScore={this.handleIncreaseScore} />
+                            <Answers answers={stuff[nr].answers} classes={classNames} checkAnswer={this.checkAnswer} increaseScore={this.handleIncreaseScore} />
                             <div id="submit">
                                 {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
                             </div>
@@ -144,7 +142,7 @@ class Main extends React.Component {
                     </div>
                 </div>
             );
-        }else {
+        } else {
             return <h1>Ain't got no</h1>
         }
     }

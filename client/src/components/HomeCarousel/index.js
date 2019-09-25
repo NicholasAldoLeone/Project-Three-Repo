@@ -16,7 +16,7 @@ return(
       alt="First slide"
     />
     <Carousel.Caption>
-      <h3 style={{fontSize: 60}}>Taking Care of Quizness...</h3>
+      <h3 className="QHead" style={{fontSize: 60}}>Taking Care of Quizness...</h3>
       {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
     </Carousel.Caption>
   </Carousel.Item>
@@ -29,8 +29,8 @@ return(
     />
 
     <Carousel.Caption>
-      <h3 style={{fontSize: 60}}>Everyday!</h3>
-      <p style={{fontSize: 30}}>Fresh Quizzes Below</p>
+      <h3 className="QHead" style={{fontSize: 60}}>Everyday!</h3>
+      <p className="QText"style={{fontSize: 30}}>Fresh Quizzes Below</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
@@ -41,8 +41,8 @@ return(
     />
 
     <Carousel.Caption>
-      <h3 style={{fontSize: 60}}>Or Create Your Own!</h3>
-      <p style={{fontSize: 30}}>Use the "Create a Quiz" button above <br></br> or feel free to register to save your data! </p>
+      <h3 className="QHead" style={{fontSize: 60}}>Or Create Your Own!</h3>
+      <p className="QText" style={{fontSize: 30}}>Use the "Create a Quiz" button above <br></br> or feel free to register to save your data! </p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

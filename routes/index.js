@@ -12,10 +12,10 @@ const requireAuth = passport.authenticate("jwt", { session: false });
 // API Routes
 router.use("/api", apiRoutes);
 
-// If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// // If no API routes are hit, send the React app
+// router.use(function(req, res) {
+//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 function tokenizer(user) {
     return jwt.sign(
@@ -34,7 +34,7 @@ function tokenizer(user) {
   });
   
   router.post("/signin", requireSignin, function (req, res) {
-    res.json({ token: tokenizer(req.user) });
+    res.json({ token: tokenizer(req.user), email: req.user.email});
   });
   
   router.post("/signup", function (req, res) {

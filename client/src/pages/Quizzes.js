@@ -2,7 +2,7 @@ import React from "react";
 import API from "../util/API";
 import { Col, Row, Container } from "../components/Grid";
 import ViewButton from "../components/ViewButton";
-
+import Carousel from "../components/HomeCarousel"
 class Quizzes extends React.Component {
     state = {
         list: [],
@@ -25,6 +25,8 @@ class Quizzes extends React.Component {
 
     render() {
         return (
+            <div>
+            <Carousel/>
             <Container fluid>
                 <Row>
                     <Col size="md-6">
@@ -45,6 +47,7 @@ class Quizzes extends React.Component {
                     </Col>
                 </Row>
             </Container>
+            </div>
         )
     }
 }

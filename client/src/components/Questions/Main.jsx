@@ -70,7 +70,6 @@ class Main extends React.Component {
 
     checkAnswer = (e) => {
 
-
         if (!this.state.questionAnswered) {
             let elem = e.target;
             let correct = parseInt(this.state.results[this.state.nr-1].correctA);

@@ -7,6 +7,7 @@ mongoose.connect(
 const quizSeed = [
   {
     title: "Math Quiz",
+    routeTitle: "mathquiz",
     author: "Jeffery Shoeshow",
   
     questions: [
@@ -29,6 +30,7 @@ const quizSeed = [
   },
   {
     title: "Space Quiz",
+    routeTitle: "mathquiz",
     author: "Mark Getmon",
     quiz: [
       {

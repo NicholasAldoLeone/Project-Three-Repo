@@ -4,18 +4,9 @@ import { Container, Row, Col, Jumbotron } from "reactstrap";
 import Question from "../components/QuestionInput";
 import Axios from "axios";
 
-const questionTemplate = {
-    text: "Enter your question here",
-    answers: [
-        { text: "Answer 1" },
-        { text: "Answer 2" },
-        { text: "Answer 3" },
-        { text: "Answer 4", isCorrect: true }
-    ]
-};
 
 class Form extends React.Component {
-
+    
     state = {
         title: "Quiz Name",
         author: "Author Name",
@@ -31,34 +22,43 @@ class Form extends React.Component {
             }
         ]
     };
-
+    
     handleTitleAuthorInput = e => {
         const { name, value } = e.target;
         this.setState({
             [name]: value
         })
     };
-
+    
     handleQuestionInput = e => {
         const { name, value } = e.target;
         const state = { ...this.state };
         state.questions[name].text = value;
         this.setState(state);
     };
-
+    
     handleAnswerInput = e => {
         const { question, answer } = e.target.dataset;
         const state = { ...this.state };
         state.questions[question].answers[answer].text = e.target.value;
         this.setState(state);
     };
-
+    
     addQuestion = () => {
+        const questionTemplate = {
+            text: "Enter your question here",
+            answers: [
+                { text: "Answer 1" },
+                { text: "Answer 2" },
+                { text: "Answer 3" },
+                { text: "Answer 4", isCorrect: true }
+            ]
+        };
         const state = { ...this.state };
-        state.questions.push(questionTemplate);
+        state.questions.push({...questionTemplate});
         this.setState(state);
     };
-
+    
     removeQuestion = i => {
         const state = { ...this.state };
         if (state.questions.length !== 1) {

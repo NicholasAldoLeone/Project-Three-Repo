@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { Container, Col, Row } from "./components/Grid"
 import './styles/quiztake.css';
 import axios from 'axios';
 
@@ -8,7 +9,7 @@ import axios from 'axios';
 import CreateForm from "./pages/Form.js";
 import Quizzes from "./pages/Quizzes.js"
 //Components
-import Navbar from "./components/Navbar";
+import NavItem from "./components/Navbar";
 import Main from './components/Questions/Main';
 import LoginForm from './components/Login';
 import Signup from './components/SignUp';
@@ -59,7 +60,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+            <NavItem updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
             {/* greet user if logged in: */}
             {this.state.loggedIn &&
               <p>Join the party, {this.state.email}!</p>

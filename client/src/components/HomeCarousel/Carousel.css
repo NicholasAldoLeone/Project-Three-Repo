@@ -1,11 +1,11 @@
-h3{
+.QHead{
 color: white;
 text-decoration-line: black;
 text-shadow: 3px 3px 6px black;
 font-size: 600rem;
 text-align: left;
 }
-p{
+.QText{
     color: white;
 text-decoration-line: black;
 text-shadow: 2px 2px 4px black;
@@ -24,4 +24,47 @@ text-align: left;
     height: 33rem;
     position: center;
     margin: 0 auto;
+}
+
+@media (max-width: 1460px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+    
+}
+@media (max-width: 480px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+
 }

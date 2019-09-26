@@ -79,7 +79,7 @@ class Form extends React.Component {
     handleFormSubmit = e => {
         e.preventDefault();
 
-        Axios.post('api/quiz/create', {
+        Axios.post('api/database/create', {
             title: this.state.title,
            author: this.state.author,
            questions:this.state.questions

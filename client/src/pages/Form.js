@@ -13,15 +13,6 @@ var sectionStyle ={
 };
 
 
-const questionTemplate = {
-    text: "Enter your question here",
-    answers: [
-        { text: "Answer 1" },
-        { text: "Answer 2" },
-        { text: "Answer 3" },
-        { text: "Answer 4", isCorrect: true }
-    ]
-};
 
 class Form extends React.Component {
 
@@ -63,8 +54,17 @@ class Form extends React.Component {
     };
 
     addQuestion = () => {
+        const questionTemplate = {
+            text: "Enter your question here",
+            answers: [
+                { text: "Answer 1" },
+                { text: "Answer 2" },
+                { text: "Answer 3" },
+                { text: "Answer 4", isCorrect: true }
+            ]
+        };
         const state = { ...this.state };
-        state.questions.push(questionTemplate);
+        state.questions.push({ ...questionTemplate });
         this.setState(state);
     };
 
@@ -87,19 +87,22 @@ class Form extends React.Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
+        var title = this.state.title
+        var routeTitle = title.toLowerCase().replace(" ", "")
 
         Axios.post('api/database/create', {
             title: this.state.title,
-           author: this.state.author,
-           questions:this.state.questions
+            routeTitle: routeTitle,
+            author: this.state.author,
+            questions: this.state.questions
         })
-        .then(response => {
-            if(!response.data.errmsg) {
-                alert("quiz added successfully");   
-            }
-        }).catch(error => {
-            console.log("there was a problem: ", error);
-        })
+            .then(response => {
+                if (!response.data.errmsg) {
+                    alert("quiz added successfully");
+                }
+            }).catch(error => {
+                console.log("there was a problem: ", error);
+            })
     }
 
     render() {
@@ -149,7 +152,7 @@ class Form extends React.Component {
                     ) : (
                             <h1>No Questions Yet</h1>
                         )}
-                
+
                 </Row>
                 <button ClassName="Button-style" onClick={this.handleFormSubmit}>Submit</button>
             </Container>

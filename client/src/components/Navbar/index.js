@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios'
 import Logo from '../../images/nobg.png'
-import { Navbar, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
-import { isNullOrUndefined } from 'util';
+// import { Navbar, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
+// import { isNullOrUndefined } from 'util';
 import "./Navbar.css"
 class NavbarComponent extends Component {
   constructor() {
@@ -79,8 +79,6 @@ class NavbarComponent extends Component {
 }
 
 export default NavbarComponent;
-
-
 
 // const navbar = props => (
 //   <div id="navbar">

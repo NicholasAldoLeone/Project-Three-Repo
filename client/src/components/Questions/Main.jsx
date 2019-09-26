@@ -1,5 +1,5 @@
 import React from 'react';
-import data from '../../data/data';
+// import data from '../../data/data';
 import Answers from '../Answers/Answers';
 import API from '../../util/API'
 class Main extends React.Component {
@@ -7,13 +7,13 @@ class Main extends React.Component {
         super(props);
         this.state = {
             nr: 0,
-            total: data.length,
+            total: 0,
             showButton: false,
             questionAnswered: false,
             score: 0,
             classNames: ['', '', '', ''],
             results: [],
-            id: ""
+            id: "",
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
@@ -35,7 +35,8 @@ class Main extends React.Component {
                 this.setState({
                     results: res.data.questions,
                     question: res.data.questions[0].text,
-                    id: res.data._id
+                    id: res.data._id,
+                    total: res.data.questions.length
                 }),
             )
             .catch(err => console.log(err));

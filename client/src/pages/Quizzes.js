@@ -69,19 +69,6 @@ class Quizzes extends React.Component {
                                 <h1>No Quizzes Found!</h1>
                             )}
                     </Col>
-                    <form>
-                        <Input
-                            value={this.state.title}
-                            onChange={this.handleInputChange}
-                            name="title"
-                            placeholder="search"
-                        />
-                        <FormBtn
-                            onClick={this.loadQuizzesByTitle}
-                        >
-                            Search
-              </FormBtn>
-                    </form>
                 </Row>
             </Container>
             </div>

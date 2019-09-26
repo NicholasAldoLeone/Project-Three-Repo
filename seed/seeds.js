@@ -27,7 +27,7 @@ const quizSeed = [
   },
   {
     title: "Space Quiz",
-    routeTitle: "mathquiz",
+    routeTitle: "spacequiz",
     author: "Mark Getmon",
     questions: [
       {

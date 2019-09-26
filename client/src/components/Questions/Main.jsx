@@ -22,23 +22,22 @@ class Main extends React.Component {
         this.handleIncreaseScore = this.handleIncreaseScore.bind(this);
         this.checkAnswer.bind(this)
     }
-
     componentDidMount() {
         var id = window.location.href;
         var newId = id.split("z/");
         this.getbyId(newId[1]);
     }
-
     getbyId = (params) => {
-        API.getSingleQuiz(params).then(res =>
-            this.setState({
-                results: res.data.questions,
-                question: res.data.questions[0].text,
-                id: res.data._id
-            })
-        ).catch(err => console.log(err));
+        API.getSingleQuiz(params)
+            .then(res =>
+                this.setState({
+                    results: res.data.questions,
+                    question: res.data.questions[0].text,
+                    id: res.data._id
+                }),
+            )
+            .catch(err => console.log(err));
     };
-
     pushData(nr) {
         this.setState({
             nr: this.state.nr + 1
@@ -49,9 +48,12 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-    
+    // UNSAFE_componentWillMount() {
+    //     let { nr } = this.state;
+    //     this.pushData(nr);
+    // }
     nextQuestion() {
-        let { nr, total, score } = this.state;
+        let { nr, } = this.state;
         this.pushData(nr);
         this.setState({
             showButton: false,
@@ -60,19 +62,14 @@ class Main extends React.Component {
         console.log(this.state.questionAnswered)
         this.resetClasses()
     }
-
     checkAnswer = (obj) => {
         console.log(obj);
-
         if (!this.state.questionAnswered) {
             // let correct = parseInt(this.state.results[this.state.nr-1].correctA);
             // console.log("I" + this.state.results[this.state.nr-1].correctA)
             let isCorrect = obj.isCorrect;
             let answerIndex = obj.a;
-
-
             let updatedClassNames = this.state.classNames;
-
             if (isCorrect) {
                 updatedClassNames[answerIndex] = 'right';
                 console.log("Correct!")
@@ -82,37 +79,30 @@ class Main extends React.Component {
                 console.log("test")
                 updatedClassNames[answerIndex] = 'wrong';
             }
-
             this.setState({
                 classNames: updatedClassNames
             })
-
             this.handleShowButton();
-
         }
     }
-
     handleShowButton() {
         this.setState({
             showButton: true,
             questionAnswered: true
         })
     }
-
     // handleStartQuiz() {
     //     this.setState({
     //         nr: 1
     //     });
     // }
-
     handleIncreaseScore() {
         this.setState({
             score: this.state.score + 1
         });
     }
-
     render() {
-        let { nr, total, question, answers, correct, showButton, questionAnswered, score, classNames } = this.state;
+        let { nr, total, showButton, classNames } = this.state;
         let stuff = this.state.results
         console.log(stuff);
         if (stuff.length !== 0) {
@@ -120,7 +110,6 @@ class Main extends React.Component {
             // console.log("1+" + stuff[nr-1].correctA)
             return (
                 <div className="container">
-
                     <div className="row">
                         <div className="col-lg-10 col-lg-offset-1">
                             <div id="question">
@@ -140,8 +129,5 @@ class Main extends React.Component {
         }
     }
 };
-
 export default Main
-
-
 // correct={[nr-1].correctA}

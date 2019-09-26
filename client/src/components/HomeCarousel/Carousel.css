@@ -25,3 +25,46 @@ text-align: left;
     position: center;
     margin: 0 auto;
 }
+
+@media (max-width: 1460px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+    
+}
+@media (max-width: 480px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+
+}

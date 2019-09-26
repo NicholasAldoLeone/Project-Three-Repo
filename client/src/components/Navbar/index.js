@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Link } from 'react-router-dom';
 import axios from 'axios'
-import Logo from '../../images/logoPineapple.png'
+import Logo from '../../images/nobg.png'
 import { Navbar, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import { isNullOrUndefined } from 'util';
 import "./Navbar.css"

@@ -3,7 +3,7 @@ import "./viewButton.css"
 
 function ViewButton(props) {
     return (
-        <a className = "btn btn-primary" {...props} type = "button" id = "quiz-button"> Take Quiz</a>
+        <button className = "btn btn-primary" {...props} type = "button" id = "quiz-button"> Take Quiz</button>
     )
 }
 

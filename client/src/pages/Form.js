@@ -3,6 +3,7 @@ import { Container, Row, Col, Jumbotron } from "reactstrap";
 
 import Question from "../components/QuestionInput";
 import Axios from "axios";
+import "./Form.css"
 
 const questionTemplate = {
     text: "Enter your question here",
@@ -102,14 +103,14 @@ class Form extends React.Component {
                         <Jumbotron>
                             <form>
                                 <h3>Quiz Name</h3>
-                                <input
+                                <input className="quiz-title"
                                     type="text"
                                     placeholder={title}
                                     name="title"
                                     value={title}
                                     onChange={this.handleTitleAuthorInput}
                                 />
-                                <h3>Quiz</h3>
+                                <h3 ClassName="quiz-author">Author</h3>
                                 <input
                                     type="text"
                                     placeholder={author}
@@ -141,7 +142,7 @@ class Form extends React.Component {
                         )}
                 
                 </Row>
-                <button onClick={this.handleFormSubmit}>Submit</button>
+                <button ClassName="Button-style" onClick={this.handleFormSubmit}>Submit</button>
             </Container>
         );
     }

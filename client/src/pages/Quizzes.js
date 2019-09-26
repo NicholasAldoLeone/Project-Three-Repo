@@ -24,6 +24,11 @@ class Quizzes extends React.Component {
         });
     };
 
+    changeUrl = (event) => {
+        const { value } = event.target;
+        this.props.history.push("/quiz/" + value);
+    }
+
     loadQuizzes = () => {
         API.getQuizzes().then(res => {
             this.setState({
@@ -61,7 +66,7 @@ class Quizzes extends React.Component {
                                                 <p className="card-text">Title: {quiz.title}</p>
                                                 <p className="card-text">Author: {quiz.author}</p>
                                                 <ul key={quiz._id}>
-                                                    <ViewButton value={quiz._id} href={"quiz/" + quiz._id} />
+                                                    <ViewButton value={quiz._id} onClick={this.changeUrl}/>
                                                 </ul>
                                             </div>
                                         </div>

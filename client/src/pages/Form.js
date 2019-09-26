@@ -1,9 +1,17 @@
 import React from "react";
 import { Container, Row, Col, Jumbotron } from "reactstrap";
-
+import Background from "../images/Brain.png";
 import Question from "../components/QuestionInput";
 import Axios from "axios";
 import "./Form.css"
+
+var sectionStyle ={
+    width: "100%",
+    minHeight: "1200px",
+   
+    backgroundImage: 'url(' + Background + ')'
+};
+
 
 const questionTemplate = {
     text: "Enter your question here",
@@ -97,6 +105,7 @@ class Form extends React.Component {
     render() {
         const { title, author, questions } = this.state;
         return (
+            <section style={sectionStyle}>
             <Container>
                 <Row>
                     <Col className="text-center">
@@ -144,6 +153,7 @@ class Form extends React.Component {
                 </Row>
                 <button ClassName="Button-style" onClick={this.handleFormSubmit}>Submit</button>
             </Container>
+            </section>
         );
     }
 }

@@ -66,7 +66,7 @@ class NavbarComponent extends Component {
             <div id="top-filler"></div>
             <h1 className="App-title">Taking Care of Quizness</h1>
             <img src={Logo} className="App-logo" alt="logo" />
-          </div>
+          </div>  
         </header>
       </div>
 

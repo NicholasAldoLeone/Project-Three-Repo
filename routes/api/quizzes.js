@@ -9,7 +9,6 @@ router.get("/all", function (req, res) {
 
 router.get("/id/:id", function (req, res) {
     db.Quiz.findById(req.params.id).then(function(data){
-        console.log("results: " + data);
         res.json(data);
     })
 })
@@ -25,6 +24,7 @@ router.post("/create", function(req, res){
 
     db.Quiz.create({
         title: req.body.title,
+        routeTitle: req.body.routeTitle,
         author: req.body.author,
         questions: req.body.questions
 

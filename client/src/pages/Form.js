@@ -6,7 +6,7 @@ import Axios from "axios";
 
 
 class Form extends React.Component {
-    
+
     state = {
         title: "Quiz Name",
         author: "Author Name",
@@ -22,28 +22,28 @@ class Form extends React.Component {
             }
         ]
     };
-    
+
     handleTitleAuthorInput = e => {
         const { name, value } = e.target;
         this.setState({
             [name]: value
         })
     };
-    
+
     handleQuestionInput = e => {
         const { name, value } = e.target;
         const state = { ...this.state };
         state.questions[name].text = value;
         this.setState(state);
     };
-    
+
     handleAnswerInput = e => {
         const { question, answer } = e.target.dataset;
         const state = { ...this.state };
         state.questions[question].answers[answer].text = e.target.value;
         this.setState(state);
     };
-    
+
     addQuestion = () => {
         const questionTemplate = {
             text: "Enter your question here",
@@ -55,10 +55,10 @@ class Form extends React.Component {
             ]
         };
         const state = { ...this.state };
-        state.questions.push({...questionTemplate});
+        state.questions.push({ ...questionTemplate });
         this.setState(state);
     };
-    
+
     removeQuestion = i => {
         const state = { ...this.state };
         if (state.questions.length !== 1) {
@@ -78,19 +78,22 @@ class Form extends React.Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
+        var title = this.state.title
+        var routeTitle = title.toLowerCase().replace(" ", "")
 
         Axios.post('api/database/create', {
             title: this.state.title,
-           author: this.state.author,
-           questions:this.state.questions
+            routeTitle: routeTitle,
+            author: this.state.author,
+            questions: this.state.questions
         })
-        .then(response => {
-            if(!response.data.errmsg) {
-                alert("quiz added successfully");   
-            }
-        }).catch(error => {
-            console.log("there was a problem: ", error);
-        })
+            .then(response => {
+                if (!response.data.errmsg) {
+                    alert("quiz added successfully");
+                }
+            }).catch(error => {
+                console.log("there was a problem: ", error);
+            })
     }
 
     render() {
@@ -139,7 +142,7 @@ class Form extends React.Component {
                     ) : (
                             <h1>No Questions Yet</h1>
                         )}
-                
+
                 </Row>
                 <button onClick={this.handleFormSubmit}>Submit</button>
             </Container>

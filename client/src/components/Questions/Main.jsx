@@ -1,7 +1,7 @@
 import React from 'react';
 import Answers from '../Answers/Answers';
 import API from '../../util/API'
-
+​
 class Main extends React.Component {
     constructor(props) {
         super(props);
@@ -49,19 +49,19 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-
+​
     nextQuestion() {
         let { nr, } = this.state;
         let { total } = this.state;
         this.pushData(nr);
         console.log("nr", nr);
         console.log("total", total)
-
+​
         if (nr > total - 2) {
             console.log("Quiz finished");
             this.props.history.push("/finished");
         }
-
+​
         else {
             this.setState({
                 showButton: false,
@@ -97,7 +97,7 @@ class Main extends React.Component {
             questionAnswered: true
         })
     }
-
+​
     handleIncreaseScore() {
         this.setState({
             score: this.state.score + 1
@@ -106,7 +106,7 @@ class Main extends React.Component {
     render() {
         let { nr, total, showButton, classNames } = this.state;
         let stuff = this.state.results
-
+​
         if (stuff.length !== 0) {
             return (
                 <div className="container">
@@ -130,4 +130,5 @@ class Main extends React.Component {
         }
     }
 };
+
 export default Main

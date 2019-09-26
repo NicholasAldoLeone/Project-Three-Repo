@@ -7,44 +7,40 @@ mongoose.connect(
 const quizSeed = [
   {
     title: "Math Quiz",
+    routeTitle: "mathquiz",
     author: "Jeffery Shoeshow",
   
-    quiz: [
+    questions: [
       {
-        body: "What is the sum of 1 + 1?",
-        options: ["A: 1", "B: 2", "C: 3", "D: 4"],
-        correctA: 2,
+        text: "What is the sum of 1 + 1?",
+        answers: [{"text": "A: 1"}, {"text": "B: 2", "isCorrect": true}, {"text": "C: 3"}, {"text": "D: 4"}],
       },
       {
-        body: "What is the sum of 2 + 2?",
-        options: ["A: 8", "B: 7", "C: 4", "D: 2"],
-        correctA: 3,
+        text: "What is the sum of 2 + 2?",
+        answers: [{"text": "A: 8"}, {"text": "B: 7"}, {"text": "C: 4", "isCorrect": true},{"text": "D: 2"}],
       },
       {
-        body: "What is the sum of 7 + 3?",
-        options: ["A: 10", "B: 5", "C: 8", "D: 3"],
-        correctA: 1,
+        text: "What is the sum of 7 + 3?",
+        answers: [{"text": "A: 10", "isCorrect": true}, {"text": "B: 5"}, {"text": "C: 8"}, {"text": "D: 3"}],
       }
     ]
   },
   {
     title: "Space Quiz",
+    routeTitle: "mathquiz",
     author: "Mark Getmon",
-    quiz: [
+    questions: [
       {
-        body: "Which planet is the closes to the sun?",
-        options: ["A: Earth", "B: Mercury", "C: Mars", "D: Jupiter"],
-        correctA: 2,
+        text: "Which planet is the closes to the sun?",
+        answers: [{"text": "A: Earth"}, {"text": "B: Mercury", "isCorrect": true}, {"text": "C: Mars"}, {"text": "D: Jupiter"}],
       },
       {
-        body: "The Earth rotates around ____",
-        options: ["A: The Sun", "B: Earth", "C: Neptune", "D: Pluto"],
-        correctA: 1,
+        text: "The Earth rotates around ____",
+        answers: [{"text": "A: The Sun", "isCorrect": true }, {"text": "B: Earth"}, {"text": "C: Neptune"} , {"text": "D: Pluto"}],
       },
       {
-        body: "The larget planet in our solar system is?",
-        options: ["A: Saturn", "B: Uranus", "C: Jupiter", "D: Earth"],
-        correctA: 3,
+        text: "The larget planet in our solar system is?",
+        answers: [{"text": "A: Saturn"}, {"text": "B: Uranus"}, {"text": "C: Jupiter", "isCorrect" :true }, {"text": "D: Earth"}],
       }
     ]
   }

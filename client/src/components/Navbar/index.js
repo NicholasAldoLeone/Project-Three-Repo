@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Link } from 'react-router-dom';
 import axios from 'axios'
-import Logo from '../../images/logoPineapple.png'
+import Logo from '../../images/nobg.png'
 import { Navbar, Button, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import { isNullOrUndefined } from 'util';
 import "./Navbar.css"
@@ -51,13 +51,13 @@ class NavbarComponent extends Component {
             ) : (
                 <section className="navbar-section">
                   <Link to="/" className="btn btn-link text-secondary">
-                    <span className="text-secondary">home</span>
+                    <span className="text-secondary">Home</span>
                   </Link>
                   <Link to="/login" className="btn btn-link text-secondary">
-                    <span className="text-secondary">login</span>
+                    <span className="text-secondary">Login</span>
                   </Link>
                   <Link to="/signup" className="btn btn-link">
-                    <span className="text-secondary">sign up</span>
+                    <span className="text-secondary">Sign Up</span>
                   </Link>
                 </section>
               )}

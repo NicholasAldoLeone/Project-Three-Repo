@@ -6,7 +6,11 @@ export default {
     },
 
     getSingleQuiz: function(id) {
-        return axios.get("/api/database/" + id);
+        return axios.get("/api/database/id/" + id);
+    },
+
+    getByTitle: function(routeTitle) {
+        return axios.get("/api/database/route/" + routeTitle)
     },
 
     createQuiz: function(quizForm) {

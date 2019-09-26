@@ -77,8 +77,6 @@ class NavbarComponent extends Component {
 
 export default NavbarComponent;
 
-
-
 // const navbar = props => (
 //   <div id="navbar">
 //     <Navbar bg="light" expand="lg">

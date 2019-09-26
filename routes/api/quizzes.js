@@ -9,7 +9,6 @@ router.get("/all", function (req, res) {
 
 router.get("/id/:id", function (req, res) {
     db.Quiz.findById(req.params.id).then(function(data){
-        console.log("results: " + data);
         res.json(data);
     })
 })

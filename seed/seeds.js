@@ -32,7 +32,7 @@ const quizSeed = [
     title: "Space Quiz",
     routeTitle: "mathquiz",
     author: "Mark Getmon",
-    quiz: [
+    questions: [
       {
         body: "Which planet is the closes to the sun?",
         options: ["A: Earth", "B: Mercury", "C: Mars", "D: Jupiter"],

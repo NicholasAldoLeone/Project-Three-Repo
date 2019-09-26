@@ -30,16 +30,15 @@ class Main extends React.Component {
     }
 
     getbyId = (params) => {
-        API.getSingleQuiz(params)
-            .then(res =>
-                this.setState({
-                    results: res.data.questions,
-                    question: res.data.questions[0].text,
-                    id: res.data._id
-                }),
-            )
-            .catch(err => console.log(err));
+        API.getSingleQuiz(params).then(res =>
+            this.setState({
+                results: res.data.questions,
+                question: res.data.questions[0].text,
+                id: res.data._id
+            })
+        ).catch(err => console.log(err));
     };
+
     pushData(nr) {
         this.setState({
             nr: this.state.nr + 1
@@ -50,10 +49,7 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-    // UNSAFE_componentWillMount() {
-    //     let { nr } = this.state;
-    //     this.pushData(nr);
-    // }
+    
     nextQuestion() {
         let { nr, total, score } = this.state;
         this.pushData(nr);

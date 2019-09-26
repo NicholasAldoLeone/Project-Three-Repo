@@ -1,8 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-// import data from '../../data/data';
-=======
->>>>>>> 000a8acd67be4f44af26cf15cdb9243e7b4b6882
 import Answers from '../Answers/Answers';
 import API from '../../util/API'
 

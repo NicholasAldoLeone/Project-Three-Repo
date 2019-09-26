@@ -55,7 +55,7 @@ class Form extends React.Component {
 
     addQuestion = () => {
         const state = { ...this.state };
-        state.questions.push(questionTemplate);
+        state.questions.push({...questionTemplate});
         this.setState(state);
     };
 

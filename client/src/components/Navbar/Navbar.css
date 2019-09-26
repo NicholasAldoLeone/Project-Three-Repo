@@ -1,11 +1,22 @@
 .App-logo {
+<<<<<<< HEAD
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    bottom: 10px;
+}
+.App-header {
+    background-color: #42adef;
+=======
     height: 20%;
     width: 10%;
 }
 .App-header {
     background-color: white;
+>>>>>>> 000a8acd67be4f44af26cf15cdb9243e7b4b6882
     margin-top: -2rem;
 }
 .App-title {
     display: inline-block;
+    margin-top: 20px;
 }

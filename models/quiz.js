@@ -12,6 +12,11 @@ const quizSchema = new Schema({
         required: true
     },
 
+    routeTitle: {
+        type: String,
+        required: true
+    },
+
     questions: []
 })
 

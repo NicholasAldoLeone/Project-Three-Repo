@@ -35,7 +35,6 @@ class Quizzes extends React.Component {
 
     loadQuizzesByTitle = (event) => {
         event.preventDefault();
-        console.log("Btb");
         var title = this.state.title;
         var routeTitle = title.toLowerCase().replace(" ", "")
 

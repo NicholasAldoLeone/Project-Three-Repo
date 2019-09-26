@@ -48,10 +48,7 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-    // UNSAFE_componentWillMount() {
-    //     let { nr } = this.state;
-    //     this.pushData(nr);
-    // }
+    
     nextQuestion() {
         let { nr, } = this.state;
         this.pushData(nr);
@@ -65,15 +62,12 @@ class Main extends React.Component {
     checkAnswer = (obj) => {
         console.log(obj);
         if (!this.state.questionAnswered) {
-            // let correct = parseInt(this.state.results[this.state.nr-1].correctA);
-            // console.log("I" + this.state.results[this.state.nr-1].correctA)
             let isCorrect = obj.isCorrect;
             let answerIndex = obj.a;
             let updatedClassNames = this.state.classNames;
             if (isCorrect) {
                 updatedClassNames[answerIndex] = 'right';
                 console.log("Correct!")
-                // increaseScore();
             }
             else {
                 console.log("test")
@@ -91,11 +85,7 @@ class Main extends React.Component {
             questionAnswered: true
         })
     }
-    // handleStartQuiz() {
-    //     this.setState({
-    //         nr: 1
-    //     });
-    // }
+ 
     handleIncreaseScore() {
         this.setState({
             score: this.state.score + 1
@@ -106,8 +96,6 @@ class Main extends React.Component {
         let stuff = this.state.results
         console.log(stuff);
         if (stuff.length !== 0) {
-            console.log("Made it");
-            // console.log("1+" + stuff[nr-1].correctA)
             return (
                 <div className="container">
                     <div className="row">
@@ -130,4 +118,3 @@ class Main extends React.Component {
     }
 };
 export default Main
-// correct={[nr-1].correctA}

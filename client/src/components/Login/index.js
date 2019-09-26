@@ -32,7 +32,6 @@ class LoginForm extends Component {
             })
             .then(response => {
                 console.log('login response: ')
-                console.log(response)
                 if (response.status === 200) {
                     // update App.js state
                     console.log(this.props);

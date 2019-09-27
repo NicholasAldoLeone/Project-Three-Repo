@@ -10,6 +10,8 @@ import {
   Col
 } from "reactstrap";
 
+import "./question.css";
+
 function Question({
   length,
   question,
@@ -21,7 +23,7 @@ function Question({
   setCorrect
 }) {
   return (
-    <Card>
+    <Card id = "question-card">
       <CardBody>
         <Row>
           <Col xs="10">

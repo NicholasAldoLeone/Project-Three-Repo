@@ -5,10 +5,10 @@ import Question from "../components/QuestionInput";
 import Axios from "axios";
 import "./Form.css"
 
-var sectionStyle ={
+var sectionStyle = {
     width: "100%",
     minHeight: "1200px",
-   
+
     backgroundImage: 'url(' + Background + ')'
 };
 
@@ -109,53 +109,58 @@ class Form extends React.Component {
         const { title, author, questions } = this.state;
         return (
             <section style={sectionStyle}>
-            <Container>
-                <Row>
-                    <Col className="text-center">
-                        <Jumbotron>
-                            <form>
-                                <h3>Quiz Name</h3>
-                                <input className="quiz-title"
-                                    type="text"
-                                    placeholder={title}
-                                    name="title"
-                                    value={title}
-                                    onChange={this.handleTitleAuthorInput}
-                                />
-                                <h3 ClassName="quiz-author">Author</h3>
-                                <input
-                                    type="text"
-                                    placeholder={author}
-                                    name="author"
-                                    value={author}
-                                    onChange={this.handleTitleAuthorInput} />
-                            </form>
-                        </Jumbotron>
-                    </Col>
-                </Row>
-                <Row>
-                    {questions.length !== 0 ? (
-                        questions.map((question, i) => (
-                            <Col key={"question" + i} sm="12" md="6">
-                                <Question
-                                    length={questions.length}
-                                    question={question}
-                                    questionIndex={i}
-                                    handleAnswerInput={this.handleAnswerInput}
-                                    handleQuestionInput={this.handleQuestionInput}
-                                    removeQuestion={this.removeQuestion}
-                                    addQuestion={this.addQuestion}
-                                    setCorrect={this.setCorrect}
-                                />
-                            </Col>
-                        ))
-                    ) : (
-                            <h1>No Questions Yet</h1>
-                        )}
+                <Container>
+                    <Row>
+                        <Col className="text-center">
+                            <Jumbotron className="Jumbotron">
+                                <form>
+                                    <h3>Quiz Name</h3>
+                                    <input className="quiz-title"
+                                        type="text"
+                                        placeholder={title}
+                                        name="title"
+                                        value={title}
+                                        onChange={this.handleTitleAuthorInput}
+                                    />
+                                    <h3 ClassName="quiz-author">Author</h3>
+                                    <input
+                                        type="text"
+                                        placeholder={author}
+                                        name="author"
+                                        value={author}
+                                        onChange={this.handleTitleAuthorInput} />
+                                </form>
+                            </Jumbotron>
+                        </Col>
+                    </Row>
+                    <Row>
+                        {questions.length !== 0 ? (
+                            questions.map((question, i) => (
+                                <Col key={"question" + i} sm="12" md="6">
+                                    <Question
+                                        length={questions.length}
+                                        question={question}
+                                        questionIndex={i}
+                                        handleAnswerInput={this.handleAnswerInput}
+                                        handleQuestionInput={this.handleQuestionInput}
+                                        removeQuestion={this.removeQuestion}
+                                        addQuestion={this.addQuestion}
+                                        setCorrect={this.setCorrect}
+                                    />
+                                </Col>
+                            ))
+                        ) : (
+                                <h1>No Questions Yet</h1>
+                            )}
 
-                </Row>
-                <button ClassName="Button-style" onClick={this.handleFormSubmit}>Submit</button>
-            </Container>
+                    </Row>
+
+                    <Row className="submitbtn">
+                        <Col className="text-centers">
+                            <button className="btn btn-primary" onClick={this.handleFormSubmit} id="submit-btn">Submit</button>
+                        </Col>
+                    </Row>
+                </Container>
             </section>
         );
     }

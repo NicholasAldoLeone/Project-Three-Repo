@@ -13,10 +13,9 @@ class Finish extends React.Component {
             <Container>
                 <Row>
                     <Col size="md-12">
-                        <h3>Congrats you finished the Quiz!</h3>
                         <div className="card" id="finish-body">
-
                             <div className="card-body" id="finish-body">
+                                <h3>Congrats you finished the Quiz!</h3>
                                 <p className="card-text">Thats it their is nothing else to do expect click the button, so just go on ahead and click the button because the button will return you to the home page where you can take more quizzes or take the same quiz to reach the button again, but that cant happen unless you click the button because clicking the button gives you the option to come back to the button which you have not clicked because you're still reading this, so just go and click the button CLICK IT. </p>
 
                                 <p>
@@ -26,12 +25,9 @@ class Finish extends React.Component {
                                 <p>
                                     Click the button.
                             </p>
+                                <ReturnButton onClick={this.changeUrl} />
                             </div>
                         </div>
-
-                    </Col>
-                    <Col size="md-12">
-                        <ReturnButton onClick={this.changeUrl} />
                     </Col>
                 </Row>
             </Container>

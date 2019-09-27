@@ -2,26 +2,25 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
-class LoginForm extends Component {
+class SigninAndUp extends Component {
     constructor() {
         super()
         this.state = {
             email: '',
             password: '',
-            redirectTo: null
+            redirectTo: null,
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSignin = this.handleSignin.bind(this)
+        this.handleSignup = this.handleSignup.bind(this)
         this.handleChange = this.handleChange.bind(this)
-  
     }
-
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
-    handleSubmit(event) {
+    handleSignin = (event) => {
         event.preventDefault()
         console.log('handleSubmit')
 
@@ -34,7 +33,7 @@ class LoginForm extends Component {
                 console.log('login response: ')
                 if (response.status === 200) {
                     // update App.js state
-                    console.log(this.props);
+                    console.log("Foo",this.props);
                     this.props.updateUser({
                         loggedIn: true,
                         email: response.data.email
@@ -43,13 +42,42 @@ class LoginForm extends Component {
                     this.setState({
                         redirectTo: '/'
                     })
+                    this.props.closeModal();
                 }
             }).catch(error => {
                 console.log('login error: ')
                 console.log(error);
-                
+
             })
     }
+
+    handleSignup(event) {
+		console.log('sign-up handleSubmit, email: ')
+		console.log(this.state.email)
+		event.preventDefault()
+
+		//request to server to add a new email/password
+		axios.post('/signup', {
+			email: this.state.email,
+			password: this.state.password
+		})
+			.then(response => {
+				console.log(response)
+				if (!response.data.errmsg) {
+					console.log('successful signup')
+					this.setState({ //redirect to login page
+						redirectTo: '/'
+                    })
+                    this.props.closeModal();
+				} else {
+					console.log('email already taken')
+				}
+			}).catch(error => {
+				console.log('signup error: ')
+				console.log(error)
+
+			})
+	}
 
     render() {
         if (this.state.redirectTo) {
@@ -92,9 +120,14 @@ class LoginForm extends Component {
                             <div className="col-7"></div>
                             <button
                                 className="btn btn-primary col-1 col-mr-auto"
-                               
-                                onClick={this.handleSubmit}
+
+                                onClick={this.handleSignin}{...this.toggleModal}
                                 type="submit">Login</button>
+                                <button
+						className="btn btn-primary col-1 col-mr-auto"
+						onClick={this.handleSignup}
+						type="submit"
+					>Sign up</button>
                         </div>
                     </form>
                 </div>
@@ -103,4 +136,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm
+export default SigninAndUp

@@ -3,15 +3,13 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import './styles/quiztake.css';
 import axios from 'axios';
-
 //Pages
 import CreateForm from "./pages/Form.js";
 import Quizzes from "./pages/Quizzes.js"
 //Components
 import NavItem from "./components/Navbar";
 import Main from './components/Questions/Main';
-import LoginForm from './components/Login';
-import Signup from './components/SignUp';
+import SigninAndUp from './components/SigninAndUp';
 import Finish from "./pages/Finish";
 
 class App extends Component {
@@ -37,8 +35,6 @@ class App extends Component {
 
   getUser() {
     axios.get('/').then(response => {
-      console.log('Get user response: ')
-      console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
 
@@ -60,7 +56,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <NavItem updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <NavItem updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
             {/* greet user if logged in: */}
             {this.state.loggedIn &&
               <p>Join the party, {this.state.email}!</p>
@@ -69,9 +65,7 @@ class App extends Component {
               <Route exact path="/" component={Quizzes} />
               <Route exact path="/quiz/:id" component={Main} />
               <Route exact path="/create" component={CreateForm} />
-              <Route exact path="/finished" component={Finish}/>
-              <Route path="/login" render={() => <LoginForm updateUser={this.updateUser} />} />
-              <Route path="/signup" render={() => <Signup />} />
+              <Route exact path="/finished" component={Finish} />
             </Switch>
           </div>
         </Router>

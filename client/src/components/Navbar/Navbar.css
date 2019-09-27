@@ -5,6 +5,7 @@
     bottom: 10px;
 }
 .App-header {
+    color: white;
     background-color: #42adef;
     margin-top: -2rem;
 }
@@ -14,4 +15,13 @@
     margin-top: 20px;
     align-content: right;
     margin-right: -1rem;
+}
+.homeN{
+    color: white;
+}
+.logN{
+    color: white;
+}
+.createN{
+    color: white;
 }

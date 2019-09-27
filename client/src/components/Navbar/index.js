@@ -54,26 +54,26 @@ class NavbarComponent extends Component {
             {loggedIn ? (
               <section className="navbar-section">
                 <Link to="/" className="btn btn-link text-secondary">
-                  <span className="text-secondary">Home</span>
+                  <span className="homeN">Home</span>
                 </Link>
                 <Link to={loggedIn ? "/create" : "/"} className="btn btn-link" onClick={this.check}>
-                  <span className="text-secondary">Create a Quiz</span>
+                  <span className="createN">Create a Quiz</span>
                 </Link>
                 <Link to="/" className="btn btn-link text-secondary" onClick={this.logout}>
-                  <span className="text-secondary">Logout</span>
+                  <span className="logN">Logout</span>
                 </Link>
                 <span> {this.props.email} is in Quizness!</span>
               </section>
             ) : (
                 <section className="navbar-section">
                   <Link to="/" className="btn btn-link text-secondary">
-                    <span className="text-secondary">Home</span>
+                    <span className="homeN">Home</span>
                   </Link>
                   <Link to={loggedIn ? "/create" : "/"} className="btn btn-link" onClick={this.check}>
-                    <span className="text-secondary">Create a Quiz</span>
+                    <span className="createN">Create a Quiz</span>
                   </Link>
                   <Link to="/" className="btn btn-link" onClick={this.check}>
-                    <span className="text-secondary">Login</span>
+                    <span className="logN">Login</span>
                   </Link>
                 </section>
               )}

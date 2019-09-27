@@ -42,7 +42,7 @@ return(
 
     <Carousel.Caption>
       <h3 className="QHead" style={{fontSize: 60}}>Or Create Your Own!</h3>
-      <p className="QText" style={{fontSize: 30}}>Use the "Create a Quiz" button above</p>
+      <p className="QText" style={{fontSize: 30}}>Use the "Create a Quiz" button abovenpm</p>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>

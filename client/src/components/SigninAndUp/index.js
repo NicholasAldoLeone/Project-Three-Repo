@@ -40,7 +40,7 @@ class SigninAndUp extends Component {
                     })
                     // update the state to redirect to home
                     this.setState({
-                        redirectTo: '/'
+                        redirectTo: '/create'
                     })
                     this.props.closeModal();
                 }
@@ -66,7 +66,7 @@ class SigninAndUp extends Component {
 				if (!response.data.errmsg) {
 					console.log('successful signup')
 					this.setState({ //redirect to login page
-						redirectTo: '/'
+						redirectTo: '/create'
                     })
                     this.props.closeModal();
 				} else {

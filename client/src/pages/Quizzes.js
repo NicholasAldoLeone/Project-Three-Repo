@@ -43,11 +43,23 @@ class Quizzes extends React.Component {
         var title = this.state.title;
         var routeTitle = title.toLowerCase().replace(" ", "")
 
-        API.getByTitle(routeTitle).then(res => {
-            this.setState({
-                list: res.data
+        if(!routeTitle) {
+            API.getQuizzes().then(res => {
+                this.setState({
+                    list: res.data
+                })
             })
-        })
+        }
+
+        else {
+            API.getByTitle(routeTitle).then(res => {
+                this.setState({
+                    list: res.data
+                })
+            })
+
+        }
+
     }
 
     render() {
@@ -61,9 +73,9 @@ class Quizzes extends React.Component {
                             {this.state.list.length ? (
                                 <div>
                                     {this.state.list.map(quiz => {
-                                        return <div className="card" id = "quiz-card">
+                                        return <div className="card card-image" id = "quiz-card">
                                             <div className="card-body">
-                                                <p className="card-text">Title: {quiz.title}</p>
+                                                <p className="card-text" id = "title-text"> Title: {quiz.title}</p>
                                                 <p className="card-text">Author: {quiz.author}</p>
                                                 <ul key={quiz._id}>
                                                     <ViewButton value={quiz._id} onClick={this.changeUrl}/>
@@ -86,7 +98,7 @@ class Quizzes extends React.Component {
                                 />
                                 <FormBtn
                                     onClick={this.loadQuizzesByTitle}
-                                >
+                                    >
                                     Search
                                 </FormBtn>
                             </form>

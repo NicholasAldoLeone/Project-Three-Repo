@@ -79,13 +79,11 @@ class NavbarComponent extends Component {
               )}
           </div>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
-            <ModalHeader toggle={this.toggle} close={closeBtn}>You must login to create a quiz!</ModalHeader>
+            <ModalHeader toggle={this.toggle} close={closeBtn}>You must login or sign up to create a quiz!</ModalHeader>
             <ModalBody>
               <SigninAndUp updateUser={this.props.updateUser} closeModal={this.closeModal} />
             </ModalBody>
             <ModalFooter>
-              <Button color="secondary" onClick={this.closeModal}
-              >Close</Button>
             </ModalFooter>
 
           </Modal>

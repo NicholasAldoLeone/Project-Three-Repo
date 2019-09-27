@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-
+import "./index.css"
 class SigninAndUp extends Component {
     constructor() {
         super()
@@ -33,7 +33,6 @@ class SigninAndUp extends Component {
                 console.log('login response: ')
                 if (response.status === 200) {
                     // update App.js state
-                    console.log("Foo",this.props);
                     this.props.updateUser({
                         loggedIn: true,
                         email: response.data.email
@@ -66,9 +65,10 @@ class SigninAndUp extends Component {
 				if (!response.data.errmsg) {
 					console.log('successful signup')
 					this.setState({ //redirect to login page
-						redirectTo: '/create'
+						redirectTo: '/'
                     })
                     this.props.closeModal();
+                    this.props.openModal2();
 				} else {
 					console.log('email already taken')
 				}
@@ -85,7 +85,6 @@ class SigninAndUp extends Component {
         } else {
             return (
                 <div className="loginDiv">
-                    <h4>Login</h4>
                     <form className="form-horizontal">
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
@@ -117,14 +116,14 @@ class SigninAndUp extends Component {
                             </div>
                         </div>
                         <div className="form-group ">
-                            <div className="col-7"></div>
-                            <button
-                                className="btn btn-primary col-1 col-mr-auto"
+                            
+                            <button 
+                                className="btn btn-primary col-3 col-mr-auto not-ugly-buttons"
 
                                 onClick={this.handleSignin}{...this.toggleModal}
                                 type="submit">Login</button>
                                 <button
-						className="btn btn-primary col-1 col-mr-auto"
+						className="btn btn-primary col-3 col-mr-auto not-ugly-buttons"
 						onClick={this.handleSignup}
 						type="submit"
 					>Sign up</button>

@@ -1,7 +1,6 @@
 import React from 'react';
 import Answers from '../Answers/Answers';
 import API from '../../util/API'
-
 class Main extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +12,7 @@ class Main extends React.Component {
             score: 0,
             classNames: ['', '', '', ''],
             results: [],
-            id: ""
+            id: "",
         }
         this.nextQuestion = this.nextQuestion.bind(this);
         this.handleShowButton = this.handleShowButton.bind(this);
@@ -49,7 +48,6 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-
     nextQuestion() {
         let { nr, } = this.state;
         let { total } = this.state;
@@ -97,7 +95,6 @@ class Main extends React.Component {
             questionAnswered: true
         })
     }
-
     handleIncreaseScore() {
         this.setState({
             score: this.state.score + 1
@@ -111,7 +108,8 @@ class Main extends React.Component {
             return (
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-10 col-lg-offset-1">
+                        <div className="col-10">
+                            <div className="centerDiv">
                             <div id="question">
                                 <h4>Question {nr + 1}</h4>
                                 <p>{stuff[nr].text}</p>
@@ -120,6 +118,7 @@ class Main extends React.Component {
                             <div id="submit">
                                 {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -130,4 +129,5 @@ class Main extends React.Component {
         }
     }
 };
+
 export default Main

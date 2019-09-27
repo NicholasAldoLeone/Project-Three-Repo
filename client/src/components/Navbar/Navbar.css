@@ -1,11 +1,16 @@
 .App-logo {
-    height: 20%;
-    width: 10%;
+    height: 4rem;
+    width: 4rem;
+    align-content: top;
 }
 .App-header {
-    background-color: white;
+    background-color: #F6F819;
     margin-top: -2rem;
 }
 .App-title {
     display: inline-block;
+    justify-content: center;
+    margin-top: 20px;
+    align-content: right;
+    margin-right: -1rem;
 }

@@ -24,6 +24,7 @@ text-align: left;
     height: 33rem;
     position: center;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 @media (max-width: 1460px) {

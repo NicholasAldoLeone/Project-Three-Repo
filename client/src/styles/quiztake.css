@@ -1,3 +1,13 @@
+.App {
+    background-color: #42ADEF;
+    min-height: 1200px;
+}
+.loginDiv {
+    justify-content: center;
+    background-color: red;
+}
+
+
 body {
     background-color: #e4e4e4;
 	font-family: Open 'Courier New', Courier, monospace;

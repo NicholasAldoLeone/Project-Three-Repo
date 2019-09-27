@@ -1,0 +1,71 @@
+.QHead{
+color: white;
+text-decoration-line: black;
+text-shadow: 3px 3px 6px black;
+font-size: 600rem;
+text-align: left;
+}
+.QText{
+    color: white;
+text-decoration-line: black;
+text-shadow: 2px 2px 4px black;
+font-size: 60;
+text-align: left;
+}
+
+
+.carouselIMG{
+   width: 99rem;
+   height: 33rem;
+}
+
+.carouselCSS{
+    width: 99rem;
+    height: 33rem;
+    position: center;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+@media (max-width: 1460px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+    
+}
+@media (max-width: 480px) {
+    .carouselCSS {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .carouselCSS {
+        width: 100%;
+    }
+    .carouselIMG {
+        width: 100%;
+    }
+
+}

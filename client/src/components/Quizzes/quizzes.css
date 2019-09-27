@@ -1,0 +1,24 @@
+#quiz-card {
+    font-size: 30px;
+    padding: 10px;
+    margin-top: 20px;
+    background-image: url(https://www.bing.com/images/blob?bcid=T9gRmFSBOGsAwA);
+    background-size: contain;
+    color: white;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+#search-input-form {
+    margin-top: 10px;
+}
+
+#quiz-button {
+    height: 40px;
+}
+
+#title-text {
+    margin-top: 60px;
+}

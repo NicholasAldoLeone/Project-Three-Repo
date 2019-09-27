@@ -6,7 +6,7 @@ body {
 }
 
 #question {
-    background-color: rgb(73, 9, 73);
+    background-color: #0084C6;
     color: white;
     padding: 10px;
     text-align: center;
@@ -40,7 +40,7 @@ body {
 
 #answers li {
     background-color: #fff;
-    border: 2px solid rgb(73, 9, 73);
+    border: 2px solid #0084C6;
     min-height: 70px;
     width: 48%;
     display: flex;
@@ -50,7 +50,7 @@ body {
 }
 
 #answers li span {
-    background-color:  rgb(73, 9, 73);
+    background-color: #0084C6;
     color: #fff;
     font-size: 30px;
     flex: 75px;

@@ -39,25 +39,25 @@ class NavbarComponent extends Component {
             {loggedIn ? (
               <section className="navbar-section">
                 <Link to="/" className="btn btn-link text-secondary">
-                  <span className="text-secondary">home</span>
+                  <span className="homeN">home</span>
                 </Link>
                 <Link to="/create" className="btn btn-link">
-                  <span className="text-secondary">Create a Quiz</span>
+                  <span className="createN">Create a Quiz</span>
                 </Link>
                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                  <span className="text-secondary">logout</span>
+                  <span className="logN">logout</span>
                 </Link>
               </section>
             ) : (
                 <section className="navbar-section">
                   <Link to="/" className="btn btn-link text-secondary">
-                    <span className="text-secondary">Home</span>
+                    <span className="homeN">Home</span>
                   </Link>
                   <Link to="/login" className="btn btn-link text-secondary">
-                    <span className="text-secondary">Login</span>
+                    <span className="logN">Login</span>
                   </Link>
                   <Link to="/signup" className="btn btn-link">
-                    <span className="text-secondary">Sign Up</span>
+                    <span className="logN">Sign Up</span>
                   </Link>
                 </section>
               )}

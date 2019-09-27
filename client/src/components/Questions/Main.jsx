@@ -108,7 +108,8 @@ class Main extends React.Component {
             return (
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-10 col-lg-offset-1">
+                        <div className="col-10">
+                            <div className="centerDiv">
                             <div id="question">
                                 <h4>Question {nr + 1}</h4>
                                 <p>{stuff[nr].text}</p>
@@ -117,6 +118,7 @@ class Main extends React.Component {
                             <div id="submit">
                                 {showButton ? <button className="fancy-btn" onClick={this.nextQuestion} >{nr === total ? 'Finish quiz' : 'Next question'}</button> : null}
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>

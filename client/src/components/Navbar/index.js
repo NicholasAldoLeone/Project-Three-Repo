@@ -35,7 +35,7 @@ class NavbarComponent extends Component {
     return (
       <div>
         <header className="navbar App-header" id="nav-container">
-          <div className="col-4" >
+          <div className="col-6" >
             {loggedIn ? (
               <section className="navbar-section">
                 <Link to="/" className="btn btn-link text-secondary">
@@ -62,11 +62,14 @@ class NavbarComponent extends Component {
                 </section>
               )}
           </div>
-          <div className="col-6 col-mr-auto">
+          <div className="col-mr-auto">
             <div id="top-filler"></div>
             <h1 className="App-title">Taking Care of Quizness</h1>
             <img src={Logo} className="App-logo" alt="logo" />
           </div>
+          
+            
+            
         </header>
       </div>
 

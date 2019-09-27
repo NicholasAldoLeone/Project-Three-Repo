@@ -56,11 +56,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-          <NavItem updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-            {/* greet user if logged in: */}
-            {this.state.loggedIn &&
-              <p>Join the party, {this.state.email}!</p>
-            }
+          <NavItem updateUser={this.updateUser} loggedIn={this.state.loggedIn} email={this.state.email} />
             <Switch>
               <Route exact path="/" component={Quizzes} />
               <Route exact path="/quiz/:id" component={Main} />

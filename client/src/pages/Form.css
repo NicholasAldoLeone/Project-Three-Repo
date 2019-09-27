@@ -6,6 +6,18 @@
     margin-bottom: 20px;
 }
 
-.Button-style {
-    padding: 50px;
+#submit-btn {
+    margin-top: 5px;
+    text-align: center;
+    padding: 25px;
+
 }
+
+.submitbtn {
+    text-align: center;
+}
+
+.Jumbotron {
+    margin-top: 20px;
+}
+

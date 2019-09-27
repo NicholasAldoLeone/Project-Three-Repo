@@ -10,5 +10,8 @@
 }
 .App-title {
     display: inline-block;
+    justify-content: center;
     margin-top: 20px;
+    align-content: right;
+    margin-right: -1rem;
 }

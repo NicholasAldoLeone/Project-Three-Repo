@@ -26,16 +26,6 @@ function tokenizer(user) {
     );
   }
   
-  router.get('/', (req, res, next) => {
-    console.log('===== user!!======')
-    console.log(req.user)
-    if (req.user) {
-        res.json({ user: req.user })
-    } else {
-        res.json({ user: null })
-    }
-})
-  
   router.get("/protected", requireAuth, function(req, res){
     res.send("You have been protected!");
   });
@@ -77,14 +67,6 @@ function tokenizer(user) {
         res.send({ msg: 'no user to log out' })
     }
 })
-
-  // router.get("/user", requireAuth, function(req, res){
-  // db.User.findOne({ email })
-  // .then(user => {
-  //   // respond with the success if the user existed
-  //   res.json({ token: tokenizer(user) });
-  // });
-  // });
   
   module.exports = router;
   

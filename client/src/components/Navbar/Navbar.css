@@ -5,10 +5,23 @@
     bottom: 10px;
 }
 .App-header {
+    color: white;
     background-color: #42adef;
     margin-top: -2rem;
 }
 .App-title {
     display: inline-block;
+    justify-content: center;
     margin-top: 20px;
+    align-content: right;
+    margin-right: -1rem;
+}
+.homeN{
+    color: white;
+}
+.logN{
+    color: white;
+}
+.createN{
+    color: white;
 }

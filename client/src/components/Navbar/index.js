@@ -61,11 +61,14 @@ class NavbarComponent extends Component {
                 </section>
               )}
           </div>
-          <div className="col-6 col-mr-auto">
+          <div className="col-mr-auto">
+            <div id="top-filler"></div>
             <h1 className="App-title">Taking Care of Quizness</h1>
             <img src={Logo} className="App-logo" alt="logo" />
           </div>
           
+            
+            
         </header>
       </div>
 

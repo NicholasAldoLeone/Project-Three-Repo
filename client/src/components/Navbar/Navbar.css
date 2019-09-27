@@ -5,7 +5,10 @@
 }
 .App-header {
     background-color: #F6F819;
-    margin-top: -2rem;
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    bottom: 10px;
 }
 .App-title {
     display: inline-block;

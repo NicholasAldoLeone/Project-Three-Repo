@@ -1,13 +1,13 @@
 import React from 'react';
-import data from '../../data/data';
 import Answers from '../Answers/Answers';
 import API from '../../util/API'
+
 class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             nr: 0,
-            total: data.length,
+            total: 0,
             showButton: false,
             questionAnswered: false,
             score: 0,
@@ -33,7 +33,8 @@ class Main extends React.Component {
                 this.setState({
                     results: res.data.questions,
                     question: res.data.questions[0].text,
-                    id: res.data._id
+                    id: res.data._id,
+                    total: res.data.questions.length
                 }),
             )
             .catch(err => console.log(err));
@@ -48,14 +49,25 @@ class Main extends React.Component {
             classNames: ['', '', '', '']
         })
     }
-    
+
     nextQuestion() {
         let { nr, } = this.state;
+        let { total } = this.state;
         this.pushData(nr);
-        this.setState({
-            showButton: false,
-            questionAnswered: false,
-        });
+        console.log("nr", nr);
+        console.log("total", total)
+
+        if (nr > total - 2) {
+            console.log("Quiz finished");
+            this.props.history.push("/finished");
+        }
+
+        else {
+            this.setState({
+                showButton: false,
+                questionAnswered: false,
+            });
+        }
         console.log(this.state.questionAnswered)
         this.resetClasses()
     }
@@ -85,7 +97,7 @@ class Main extends React.Component {
             questionAnswered: true
         })
     }
- 
+
     handleIncreaseScore() {
         this.setState({
             score: this.state.score + 1
@@ -94,7 +106,7 @@ class Main extends React.Component {
     render() {
         let { nr, total, showButton, classNames } = this.state;
         let stuff = this.state.results
-        console.log(stuff);
+
         if (stuff.length !== 0) {
             return (
                 <div className="container">
@@ -112,7 +124,8 @@ class Main extends React.Component {
                     </div>
                 </div>
             );
-        } else {
+        }
+        else {
             return <h1>Ain't got no</h1>
         }
     }

@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import { Container, Col, Row } from "./components/Grid"
 import './styles/quiztake.css';
 import axios from 'axios';
 
@@ -13,6 +12,7 @@ import NavItem from "./components/Navbar";
 import Main from './components/Questions/Main';
 import LoginForm from './components/Login';
 import Signup from './components/SignUp';
+import Finish from "./pages/Finish";
 
 class App extends Component {
   constructor() {
@@ -69,6 +69,7 @@ class App extends Component {
               <Route exact path="/" component={Quizzes} />
               <Route exact path="/quiz/:id" component={Main} />
               <Route exact path="/create" component={CreateForm} />
+              <Route exact path="/finished" component={Finish}/>
               <Route path="/login" render={() => <LoginForm updateUser={this.updateUser} />} />
               <Route path="/signup" render={() => <Signup />} />
             </Switch>

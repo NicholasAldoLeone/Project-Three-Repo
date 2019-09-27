@@ -1,12 +1,8 @@
 .App {
-    background-color: #42ADEF;
     min-height: 1200px;
+    background-color: #0084C6;
+    
 }
-.loginDiv {
-    justify-content: center;
-    background-color: red;
-}
-
 
 body {
     background-color: #e4e4e4;
